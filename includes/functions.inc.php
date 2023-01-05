@@ -54,7 +54,7 @@ function retriveProducts($conn)
        <div>
            <div class="productCard">
                <img src="'.$row['Picture'].'">
-               <h3><a href="">'.$row['Name'].'</a></h3>
+               <h3><a href="productDetails.php?id='.$row['Product_ID'].'">'.$row['Name'].'</a></h3>
                <h4>'.$row['price'].'</h4>
                <Button><i class="fa-solid fa-cart-plus"></i></Button>
            </div>
@@ -66,6 +66,39 @@ function retriveProducts($conn)
   
 
 }
+
+function productDetailsQuery($conn,$id)
+{
+    
+    $stmt = $conn->prepare("SELECT * from products, category where Product_ID=? and products.category=Category_ID;");
+    $stmt->bind_param("s",$id);
+    
+     $stmt->execute();
+    
+     $result = mysqli_stmt_get_result($stmt);
+
+     while($row = mysqli_fetch_assoc($result))
+     {
+       echo '<div class="product">
+       <img class="productImg" src="'.$row['Picture'].'">
+       <div class="ProductDetails">
+           <h2>'.$row['Name'].'</h2>
+           <div class="data">
+           <label><span>Brand:</span> '.$row['Brand'].'</label>
+           <label><span>Category:</span>'.$row['Category_Name'].'</label>
+           <label><span>Stock:</span>'.$row['Stock'].'</label>
+           <label><span>Price:</span>'.$row['price'].'</label>
+           <Button><i class="fa-solid fa-cart-plus"></i></Button>
+   
+       </div>
+       </div>
+   </div>';
+     }
+  
+
+}
+
+
 
 
 

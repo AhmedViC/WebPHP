@@ -102,8 +102,8 @@
         </div>
        <div class="field">
         
-        <input type="email" id="email" name="email" required>
-        <label>Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+       
     </div>
         <div class="field">
             <input type="password" id="pass" name="pass" required>

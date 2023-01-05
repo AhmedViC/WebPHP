@@ -23,62 +23,22 @@
 </head>
 <body>
 
-<div CLASS="header">
-    <div>
-    <img src="LogoWOW.PNG">
-    </div>
-    <div>
-        <nav>
-            <ul class="navbar">
-                <li><a href="HomePage.html" > Home Page </a></li>
-              <li>    <div class="dropdown">
-                <button class="dropbtn">Products</button>
-                <div class="dropdown-content">
-        
-                  <a href="#"> <span class="material-symbols-outlined">
-                      smartphone
-                    </span>Smart Phones </a>
-        
-                  <a href="#"> <span class="material-symbols-outlined">
-                      laptop_windows
-                    </span>Laptops </a>
-                  <a href="#"><span class="material-symbols-outlined">
-                      devices_fold</span>Accessories</a>
-                  <a> <span class="material-symbols-outlined">
-                      desktop_windows
-                    </span> Desktops</a>
-        
-                </div>
-              </div></li>
-                <li><a href=" " > About </a></li>
-                <li><a href="ContactUs.css" > Contact </a></li>
-                <li><a href="LoginPage.html" > Login/Register </a></li>
-                <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
-        
-        
-                
-        
-            </ul>
-           </nav>
-</div>
-
-</div>
 
 
-<div class="product">
-    <img class="productImg" src="iphone.jpg">
-    <div class="ProductDetails">
-        <h2>iPhone</h2>
-        <div class="data">
-        <label><span>Brand:</span> Apple</label>
-        <label><span>Category:</span> Electronic Device</label>
-        <label><span>Stock:</span>20</label>
-        <label><span>Price:</span>900SAR</label>
-        <Button><i class="fa-solid fa-cart-plus"></i></Button>
+<?php
+include_once('header.php');
+include_once('includes/functions.inc.php');
+include_once('includes/dbConn.inc.php');
+    if(isset($_GET['id']))
+    {
+        productDetailsQuery($conn,$_GET['id']);
+       
 
-    </div>
-    </div>
-</div>
+    }
+
+?>
+
+
 
  <!------------------Footer------------->
  <div class="footer">
