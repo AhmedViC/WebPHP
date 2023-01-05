@@ -2,11 +2,12 @@
 
 if(isset($_POST["submit"]))
 {
+    echo var_dump( $_POST );
     echo "pass".$_POST["pass"].'\n';
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
     $email = $_POST["email"];
-    $password = $_POST["pass"];
+    $passw = $_POST["pass"];
     $birthDate = $_POST["date"];
     $phoneNum = $_POST["phone"];
     $city = $_POST["city"];
@@ -17,7 +18,7 @@ if(isset($_POST["submit"]))
     if(checkEmail($conn,$email)==true)
     {
 
-        $insert = insertUser($conn,$fname,$lname,$email,$password,$birthDate,$phoneNum,$district,$city);
+        $insert = insertUser($conn,$fname,$lname,$email,$passw,$birthDate,$phoneNum,$district,$city);
         if($insert)
         {
          header("location: ../Signuppage.php?error=none");

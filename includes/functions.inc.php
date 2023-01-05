@@ -23,14 +23,14 @@ function checkEmail($conn,$email)
 
 
 }
-function insertUser($conn, $fname, $lname, $email, $password, $birthdate,$phone,  $district,$city)
+function insertUser($conn, $fname, $lname, $email, $passw, $birthdate,$phone,  $district,$city)
 {
     
 
 
     $stmt = $conn->prepare("INSERT INTO `customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES (?, ? , ? , ?, ?, ?, ?, ?);"); 
     
-     $stmt->bind_param("ssssssss",$fname, $lname, $email, $password, $birthdate,$phone,  $district, $city);
+     $stmt->bind_param("ssssssss",$fname, $lname, $email, $passw, $birthdate,$phone,  $district, $city);
     $insert =  $stmt->execute();
 
  
