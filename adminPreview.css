@@ -1,0 +1,79 @@
+.product_grid {
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+    height: 125pt;
+    margin: 2%;
+    box-sizing: border-box;
+    padding: 1%;
+    align-content: center;
+    align-items: center;
+    border-radius: 25pt;
+    
+    
+}
+
+.grid_container {
+    justify-content: left;
+    display: flex;
+    margin: 2%;
+}
+
+.grid_items  {
+    height: 110%;
+    width: 100%;
+    
+    border-radius: 25pt;
+}
+
+.grid_items img{
+    float: left;
+    vertical-align: middle;
+    margin-bottom: 50pt;
+    margin-right: 10%;
+    border-radius: 25pt;
+    border: 5pt solid black;
+    width: 100px;
+}
+.grid_items table  {
+    text-align: center;
+    width: 60%;
+    border-spacing: 10pt;
+    height: 100%;
+    
+    color: white;
+}
+
+.grid_items th {
+
+    height: 2em;
+    border-radius: 15pt;
+    
+    background-color: black;
+}
+
+ .grid_items td {
+    border-radius: 10pt;
+    border-top: 5pt solid blue;
+    background-color: black;
+    
+}
+
+  .grid_items_buttons {
+    
+    display: flex;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+}
+
+.grid_items_buttons button {
+
+    height: 2em;
+    width: 5em;
+    margin: 5%;
+}
+
+

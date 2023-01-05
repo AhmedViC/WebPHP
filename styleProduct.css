@@ -1,0 +1,82 @@
+/* card styling */
+.productCard{
+
+    width: 200px;
+    height: 250px;
+    background-color: #266ce4;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+
+
+}
+
+
+   
+  
+
+.productCard a {
+    text-decoration: underline;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
+
+
+}
+.productCard a:hover{
+    color: black;
+    
+}
+
+.productCard button:hover{
+    color: black;
+}
+
+.productCard div{
+    margin: auto auto;
+}
+.productCard h3, .productCard h4{
+
+    margin: 0;
+    color: aliceblue;
+}
+.productCard button{
+    background: none;
+    font-family: monospace;
+    padding: 4px;
+    border: none;
+    font-size: 20px;
+    color: white;
+    margin-top: 9px;
+
+}
+.productCard img{
+
+    width: 100px;
+    border-radius: 10px;
+    
+
+    
+}
+.flexGrid{
+     display: flex;
+            justify-content: center;
+            
+}
+.productsGridContainer{
+
+    margin: 20px;
+    display: grid;
+    column-gap: 50px;
+    row-gap: 50px;
+    grid-template-columns: repeat(5, 1fr);
+
+    place-items:  center;
+    text-align: center;
+
+
+}
+
