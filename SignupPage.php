@@ -86,27 +86,31 @@
     <div class="data">
       
        
-    <form method="post" action="includes/signUp.inc.php">
+    <form method="post" action="includes/signUp.inc.php" autocomplete="off">
         <div>
             <h1>Sign Up</h1>
         </div>
         <div class="field">
         
             <input type="text" id="fname" name="fname" required>
+            <span></span>
             <label>First Name</label>
         </div>
         <div class="field">
         
             <input type="text" id="lname" name="lname" required>
+            <span></span>
             <label>Last Name</label>
         </div>
        <div class="field">
         
-        <input type="email" id="email" name="email" placeholder="Email" required>
-       
+        <input type="email" id="email" name="email" required>
+        <span></span>
+        <label>Email</label>
     </div>
         <div class="field">
             <input type="password" id="pass" name="pass" required>
+            <span></span>
             <label for="pass">Password</label>
             
            
@@ -121,9 +125,10 @@
 
         </div>
         <div class="field">
-            <label>Phone Number</label>
-            <input type="tel" id="phone" name="phone" required">
            
+           
+            <input type="tel" id="phone" name="phone" required>
+            <label>Phone Number</label>
             
            
 
@@ -140,13 +145,17 @@
 
         </div>
         <div class="field">
-            <label>District</label>
-            <input type="text" id="district" name="district"  required">
+        <input type="text" id="district" name="district"  required>
+        <span></span>
+        <label>District</label>
+           
            
             
            
 
         </div>
+
+     
         <div class="loginbutton">
             <button type="submit" name="submit">Login</button>
         </div>

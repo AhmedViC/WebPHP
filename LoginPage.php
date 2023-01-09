@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/42f7232704.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styleLogin.css">
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleLogin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap" rel="stylesheet">
 
     <link rel="icon" href="WOW1.png" sizes="32x32" type="image/png">
@@ -77,10 +78,12 @@
        <div class="field">
         
         <input type="email" id="email" required>
+        <span></span>
         <label>Email</label>
     </div>
         <div class="field">
             <input type="password" id="pass" required>
+            <span></span>
             <label for="pass">Password</label>
            
 
