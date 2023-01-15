@@ -22,6 +22,7 @@ if(isset($_POST["submit"]))
         if($insert)
         {
          header("location: ../Signuppage.php?error=none");
+       
         }
     }
     else{

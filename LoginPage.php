@@ -71,25 +71,25 @@
     <div class="data">
       
        
-    <form>
+    <form method="POST" action="includes/lognIn.inc.php">
         <div>
             <h1>Sign In</h1>
         </div>
        <div class="field">
         
-        <input type="email" id="email" required>
+        <input type="email" name="email" id="email" required>
         <span></span>
         <label>Email</label>
     </div>
         <div class="field">
-            <input type="password" id="pass" required>
+            <input name="pass" type="password" id="pass" required>
             <span></span>
             <label for="pass">Password</label>
            
 
         </div>
         <div class="loginbutton">
-            <button>Login</button>
+            <button type="submit" name="submit">Login</button>
         </div>
 
         

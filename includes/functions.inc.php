@@ -23,14 +23,41 @@ function checkEmail($conn,$email)
 
 
 }
+function logIn($conn, $email , $password)
+{
+   
+    $stmt = $conn->prepare("SELECT * from customer where email = ? and u_pass = ?;");
+    $stmt->bind_param('ss',$email,$password);
+    $stmt->execute();
+    $result = mysqli_stmt_get_result($stmt);
+   if($result->num_rows==1)
+   {
+    $row = mysqli_fetch_assoc($result);
+    {
+     echo '<h2>'.$row['Fname'].'</h2>';
+    }
+   
+}
+else{
+    echo '<h2>'.'invalid data'.'</h2>';
+
+        
+}
+
+ 
+
+
+}
+
 function insertUser($conn, $fname, $lname, $email, $passw, $birthdate,$phone,  $district,$city)
 {
     
 
+    $hashed_password = password_hash($passw,PASSWORD_DEFAULT);
 
     $stmt = $conn->prepare("INSERT INTO `customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES (?, ? , ? , ?, ?, ?, ?, ?);"); 
     
-     $stmt->bind_param("ssssssss",$fname, $lname, $email, $passw, $birthdate,$phone,  $district, $city);
+     $stmt->bind_param("ssssssss",$fname, $lname, $email, $hashed_password, $birthdate,$phone,  $district, $city);
     $insert =  $stmt->execute();
 
  
