@@ -2,8 +2,7 @@
 
 if(isset($_POST["submit"]))
 {
-    echo var_dump( $_POST );
-    echo "pass".$_POST["pass"].'\n';
+ 
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
     $email = $_POST["email"];

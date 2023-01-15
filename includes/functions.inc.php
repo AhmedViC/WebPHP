@@ -23,23 +23,35 @@ function checkEmail($conn,$email)
 
 
 }
+  //LogIn will return 1 if pass & username are correct
+    // will return 2 if email correct but poassword is not correct
+    //will return 3 if email and passowrd are not correct
 function logIn($conn, $email , $password)
 {
    
-    $stmt = $conn->prepare("SELECT * from customer where email = ? and u_pass = ?;");
-    $stmt->bind_param('ss',$email,$password);
+   echo  password_verify('gg','$2y$10$mfC6a1Fv1z7agvmuRWG4EeOoc0M3KVtmL3VwPKkpICXAPilU0z2OW');
+    $stmt = $conn->prepare("SELECT * from customer where email = ?");
+    $stmt->bind_param('s',$email);
     $stmt->execute();
     $result = mysqli_stmt_get_result($stmt);
    if($result->num_rows==1)
    {
     $row = mysqli_fetch_assoc($result);
+    $hashed_password = $row['u_pass'];
+    if(password_verify($password,$hashed_password))
     {
-     echo '<h2>'.$row['Fname'].'</h2>';
+        return 1;
     }
+    else{
+       return 2;
+    
+            
+    }
+
    
 }
 else{
-    echo '<h2>'.'invalid data'.'</h2>';
+   return 3;
 
         
 }
@@ -55,13 +67,15 @@ function insertUser($conn, $fname, $lname, $email, $passw, $birthdate,$phone,  $
 
     $hashed_password = password_hash($passw,PASSWORD_DEFAULT);
 
+
     $stmt = $conn->prepare("INSERT INTO `customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES (?, ? , ? , ?, ?, ?, ?, ?);"); 
     
      $stmt->bind_param("ssssssss",$fname, $lname, $email, $hashed_password, $birthdate,$phone,  $district, $city);
     $insert =  $stmt->execute();
+    return $insert;
 
  
-    return $insert;
+   
 
 }
 

@@ -65,6 +65,7 @@
 </div>
 
 <?php
+
     if(isset($_GET['error']))
     {
         if($_GET['error']=='none')
