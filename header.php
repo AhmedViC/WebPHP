@@ -29,7 +29,19 @@
                     </li>
                     
                     <li><a href="ContactUs.php"> Contact Us </a></li>
-                    <li><a href="LoginPage.php"> Login/Register </a></li>
+                    <?php 
+                 
+
+    if(isset($_SESSION['fname']))
+    {
+        echo ' <li><a href="includes/logout.inc.php"> Log Out </a></li>';
+    }
+    else{
+        echo '<li><a href="loginpage.php"> Login/Register </a></li>';
+
+    }
+?>
+                
                     <li><a href="CheckOut.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
 
 

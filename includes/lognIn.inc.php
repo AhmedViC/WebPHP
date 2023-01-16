@@ -19,6 +19,8 @@ if(isset($_POST["submit"]))
     if($state==1)
     {
         header("location: ../HomePage.php?m=loginInSuccessfuly");
+    
+       
     }
     else if($state==2)
     {

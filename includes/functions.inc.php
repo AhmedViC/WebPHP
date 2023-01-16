@@ -29,7 +29,7 @@ function checkEmail($conn,$email)
 function logIn($conn, $email , $password)
 {
    
-   echo  password_verify('gg','$2y$10$mfC6a1Fv1z7agvmuRWG4EeOoc0M3KVtmL3VwPKkpICXAPilU0z2OW');
+ 
     $stmt = $conn->prepare("SELECT * from customer where email = ?");
     $stmt->bind_param('s',$email);
     $stmt->execute();
@@ -40,6 +40,9 @@ function logIn($conn, $email , $password)
     $hashed_password = $row['u_pass'];
     if(password_verify($password,$hashed_password))
     {
+        session_start();
+        $_SESSION['fname']=$row['Fname'];
+
         return 1;
     }
     else{
