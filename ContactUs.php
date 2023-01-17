@@ -18,27 +18,10 @@
 
 </head>
 <!------------------Header------------->
-<body>
-    <div CLASS="header">
-        <div>
-        <img src="LogoWOW.PNG">
-        </div>
-        <div>
-       <nav>
-        <ul class="navbar">
-            <li><a href="HomePage.php" > Home Page </a></li>
-            <li><a href=" " > Products </a></li>
-            <li><a href="#" id="in" > Contact Us </a></li>
-            <li><a href="LoginPage.php" > Login/Register </a></li>
-            <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
-    
-    
-            
-    
-        </ul>
-       </nav>
-    </div>
-    </div>
+<?php
+include_once('header.php');
+
+?>
 
 <!------------------ContactUsPage------------->
 
@@ -55,18 +38,18 @@
     <div id="iz">
         <i class="fa fa-map-marker"></i> <span class="Form-info">Iau Dammam</span> 
         <i class="fa fa-phone"></i> <span class="Form-info">+9660123456789</span> 
-        <i class="fa fa-envelope"></i> <span class="Form-info">wowstore@iau.edu.sa</span>
+        <i class="fa fa-envelope"></i> <span class="Form-info">wowstoreww@gmail.com</span>
     </div>
     
 <!------------FIRST GRID------------------->
 <div id="TextForm">
-<form>
-<input type="text" placeholder="First Name" required>
-<input type="text" placeholder="Last Name" required>
-<input type="text" placeholder="Email" required>
-<input type="text" placeholder="Subject of the message"required>
-<textarea name="Message" placeholder="Write your Messaage..." rows="5" required></textarea>
-<button class="submit"> Send Message</button>
+<form action="includes/feedbackemail.inc.php" method="post">
+<input name='fname' type="text" placeholder="First Name" required>
+<input name='lname' type="text" placeholder="Last Name" required>
+<input name = 'email' type="text" placeholder="Email" required>
+<input name='subject' type="text" placeholder="Subject of the message"required>
+<textarea name="message" placeholder="Write your Messaage..." rows="5" required></textarea>
+<button type="submit" name="submit"> Send Message</button>
 </form>
 
 
