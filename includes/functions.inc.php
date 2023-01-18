@@ -94,18 +94,33 @@ function retriveProducts($conn)
 
      while($row = mysqli_fetch_assoc($result))
      {
-       echo '  <div class="productsContainer">
+        $price=$row['price'];
+        $pname=$row['Name'];
+        $pid = $row['Product_ID'];
+       echo ' <form><div class="productsContainer">
+ 
        <div>
            <div class="productCard">
                <img src="'.$row['Picture'].'">
+             
                <h3><a href="productDetails.php?id='.$row['Product_ID'].'">'.$row['Name'].'</a></h3>
                <h4>'.$row['price'].'</h4>
-               <Button><i class="fa-solid fa-cart-plus"></i></Button>
+               <Button  type="button" class="open">aa</Button>
+             
+               <input type="hidden" class="pr_id" id="producId" value="'.$row['Product_ID'].'">
+               <input type="hidden" class="pr_name" name="productName" value="'.$row['Name'].'">
+               <input type="hidden"  class="pr_price" name="productPrice" value="'.$row['price'].'">
+              
+              
+
            </div>
+         
        </div>
+       
+       </div>
+       </form>
 
-
-   </div>';
+';
      }
   
 
@@ -141,6 +156,7 @@ function productDetailsQuery($conn,$id)
   
 
 }
+
 
 
 

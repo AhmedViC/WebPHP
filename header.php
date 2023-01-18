@@ -1,3 +1,7 @@
+<?php
+
+session_start();
+?>
 <div CLASS="header">
         <div>
             <img src="LogoWOW.PNG">
@@ -42,7 +46,7 @@
     }
 ?>
                 
-                    <li><a href="CheckOut.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><a href="CheckOutpage.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
 
 
 

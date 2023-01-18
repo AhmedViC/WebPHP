@@ -22,7 +22,11 @@ $mail->addAddress('wowstoreww@gmail.com');
 $mail->isHTML(true);
 $mail->Subject = $_POST['subject'];
 
-$mail->Body="<h2>sender information:</h2>\n<br>First Name:".$_POST['fname']."<br>Last Name:".$_POST['lname']."<br>Email:".$_POST['email']."\n\n<h2>The Message:</h2>".$_POST['message']."<h2>";
+$mail->Body="<h2>sender information:</h2>\n<br>First Name:".$_POST['fname']
+."<br>Last Name:"
+.$_POST['lname']
+."<br>Email:".$_POST['email']."\n\n<h2>The Message:</h2>"
+.$_POST['message']."<h2>";
 
 
 $mail->send();

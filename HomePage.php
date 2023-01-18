@@ -4,7 +4,7 @@
 <?php
 require_once('includes/dbConn.inc.php');
 require_once('includes/functions.inc.php');
-session_start();
+
 ?>
 <head>
     <meta charset="UTF-8">
@@ -24,19 +24,46 @@ session_start();
     <link
         href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap"
         rel="stylesheet">
+        <script src="Javascript/quantitypopUp.js" defer></script>
         
         
 </head>
 
 <body>
 <?php
-  session_destroy();
+ 
+
 
 
 require_once('header.php');
 ?>
+  <form>
+<div style="display: none;" class="popUp" id="popUp">
+<div class="popUpHeader">
+   <H1 id="p_name"> Iphone x</H1>
+</div>
+<div class="popUpBody">
+  <img class="imgpop" id="imgP" src="images/FlipZ.jpg">
 
+  <h4 id="price"></h4>
+  <label for="quantity">Quantity</label>
+  <input class="popInput" type="number" name="quantity" value="1">
+  <button>
+    add to cart
+  </button>
+  <Button  type="button" class="open" onClick="closepopUp()">
+    close
+  </button>
+  <input type="hidden"  name="producId">
+               <input type="hidden"  name="productName">
+               <input type="hidden"  name="productPrice">
+               <input type="hidden"  name="Quantity">
+            
 
+              
+</div>
+</div>
+  </form>
 
 
 
