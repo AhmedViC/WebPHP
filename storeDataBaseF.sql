@@ -13,7 +13,7 @@ C_id int auto_increment primary key,
 Fname varchar(20) ,
 Lname varchar(20),
 email varchar(30),
-u_pass char(20),
+u_pass varchar(100),
 birthdate date,
 phoneNumber varchar(10),
 district varchar(30),
@@ -24,11 +24,11 @@ City_id int,
 );
 
 CREATE TABLE Storeadmin(
-
-id char(5) primary key,
+email varchar(30) primary key,
+id char(5) not null,
 fname varchar(20),
 lname varchar(20),
-adminpass varchar(20),
+adminpass varchar(100),
 birthdate date
 );
   
@@ -55,6 +55,7 @@ CREATE TABLE store.category (
   price int,
   Picture VARCHAR(45),
   Stock INT NOT NULL,
+  p_description VARCHAR(200),
   Category int ,
   
   foreign key (Category) REFERENCES category( Category_ID),
@@ -88,6 +89,7 @@ OrderID int ,
 
 
 );
+
 use store;
 INSERT INTO `Category` (`Category_ID`,`Category_Name`,`Brand`) VALUES
  (11112,'Mobiles & Accessories','Samsung')
@@ -109,17 +111,18 @@ INSERT INTO `cities` (`CityID`,`CityName`) VALUES
 (766,'KHOBAR'),
 (788,'DAMMAM');
 
+UPDATE `store`.`products` SET `p_description` = 'Samsung Galaxy S20, the smallest of the S20 family, comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage. T' WHERE (`Product_ID` = '46');
 
 use store;
-INSERT INTO `products` (`Product_ID`,`Name`,`price`,`Picture`,`Stock`,`Category`) VALUES (46,'Galaxy S20',2000,'images/Samsung-S20.jpeg',55,11112)
+INSERT INTO `products` (`Product_ID`,`Name`,`price`,`Picture`,`Stock`,`Category`) VALUES (46,'Galaxy S20',2000,'images/SamsungS20.jpeg',55,11112)
 ,(47,'Galaxy S20 plus',2000,'images/iphone.jpg',68,11112)
 ,(48,'Galaxy S21 ultra',2000,'images/iphone.jpg',32,11112)
-,(49,'Galaxy Z Flip',2000,'images/Flipz.jpg',29,11112)
+,(49,'Galaxy Z Flip',2000,'images/Flipz.png',29,11112)
 ,(56,'Iphone X',2000,'images/iphone.jpg',64,11113)
 ,(57,'Iphone 11',2000,'images/iphone.jpg',66,11113)
 ,(58,'Iphone 11plus',2000,'images/iphone.jpg',45,11113)
 , (59,'Iphone 13 MAX',2000,'images/iphone.jpg',32,11113)
-,(72,'MateBook E',2000,'images/iphone.jpg',60,11118)
+,(72,'MateBook E',2000,'images/MateBookE.png',60,11118)
 , (73,'MateBook 14',2000,'images/iphone.jpg',25,11118)
 ,(74,'MateBook 14s',2000,'images/iphone.jpg',30,11118)
 ,(75,'Creator 7i',2000,'images/iphone.jpg',25,11119)
@@ -133,9 +136,7 @@ INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('011', 'ABHA');
 
 
 
-use store ;
-INSERT INTO `storeadmin` (`id`,`fname`,`lname`,`adminpass`,`birthdate`) VALUES ('4445','Ahmad','Al Sahli','4443','1987-12-15')
-,('4449','Ali','Alali','4447','1989-05-13');
+
 
 
 INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Ahmed', 'AlMAGHREBI', 'ahmed@gmail.com', '1234', '1999-01-01', '0667777777', 'Hay alshati', '788');

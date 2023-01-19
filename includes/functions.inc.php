@@ -180,6 +180,7 @@ function productDetailsQuery($conn,$id)
            <label><span>Category:</span>'.$row['Category_Name'].'</label>
            <label><span>Stock:</span>'.$row['Stock'].'</label>
            <label><span>Price:</span>'.$row['price'].'</label>
+           <label class="p_description"><span>Details:</span>'.$row['p_description'].'</label>
            <Button><i class="fa-solid fa-cart-plus"></i></Button>
    
        </div>

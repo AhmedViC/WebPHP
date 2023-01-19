@@ -5,14 +5,23 @@
     justify-content: left;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    width: 100%;
+    
 
   
 }
 .productImg{
+    width: 500px;
     margin-left: 7rem;
-    width: 250px;
+   
     
 
+}
+.p_description
+{
+    width: 500px;
+    text-align: left;
+    font-size: 1.2rem;
 }
 .product button{
     background: none;
