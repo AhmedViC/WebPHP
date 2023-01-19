@@ -132,7 +132,7 @@ function retriveProducts($conn)
         $pid = $row['Product_ID'];
        echo ' <form><div class="productsContainer">
  
-       <div>
+       <div >
            <div class="productCard">
                <img src="'.$row['Picture'].'">
              
