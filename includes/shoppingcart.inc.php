@@ -12,6 +12,7 @@ if(isset($_SESSION['fname']))
     $quantity = $_POST['Quantity'];
     $img = $_POST['Pimg'];
     addItemtoCart($p_id,$p_name,$p_price,$quantity,$img);
+    header("location: ../homepage.php?message=addedSuccessfully");
    
 }
 else
