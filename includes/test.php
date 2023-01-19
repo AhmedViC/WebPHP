@@ -1,8 +1,4 @@
 <?php
-
-require_once('functions.inc.php');
-require_once('dbConn.inc.php');
-
-retriveProducts($conn);
+echo password_hash('aa',PASSWORD_DEFAULT);
 
 ?>

@@ -24,12 +24,16 @@ if(isset($_POST["submit"]))
     }
     else if($state==2)
     {
-        header("location: ../Signuppage.php?error=falsePassword"); 
+        header("location: ../LoginPage.php?error=falsePassword"); 
        }
        else if($state==3)
        {
-           header("location: ../Signuppage.php?error=incorrectEmail"); 
+           header("location: ../AdminPage.php"); 
           }
+          else if($state==4)
+          {
+              header("location: ../LoginPage.php?error=incorrectEmail"); 
+             }
 
 
   

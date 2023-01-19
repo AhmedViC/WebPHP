@@ -47,30 +47,42 @@ foreach( $_SESSION["shoppingcart"] as $p_id)
 
 function displayCartItems()
 {
+    if(isCartExist())
+    {
     foreach( $_SESSION["shoppingcart"] as $p_id)
 {
     
-    echo '
+    echo '<form>
     <p><a href="#">'
     .$p_id['name'].
     '</a> <span class="price">
-    '.$p_id['price'].'</span></p>';
+    '.$p_id['price'].'</span></p></form>';
     
 
-} 
+}
+ 
+    }
 
 
 }
 
 function printTotalItems()
 {
+    if(isCartExist())
+    {
+    
     echo '
     '.count($_SESSION["shoppingcart"]).'
     ';
+    }
+    else echo '0';
+
 }
 
 function printTotalprice()
 {
+    if(isCartExist())
+    {
     $totalprice = 0;
     foreach( $_SESSION["shoppingcart"] as $p_id)
     {
@@ -81,5 +93,25 @@ function printTotalprice()
     } 
     echo 
     ''.$totalprice.' SAR';
+}
+else{
+    echo 
+    '0 SAR';
+}
 
+}
+function isCartExist()
+{
+    if(!empty( $_SESSION["shoppingcart"]))
+    {
+        return 1;
+    }
+    else {
+        return 0 ;
+    }
+}
+
+function isIteminThecart($index,$array)
+{
+    // array_key_exists() ;
 }

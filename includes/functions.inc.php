@@ -23,9 +23,33 @@ function checkEmail($conn,$email)
 
 
 }
+
+function ManagerLogIn($conn, $email , $password)
+{
+    $stmt = $conn->prepare("SELECT * FROM store.storeadmin where id=?");
+    $stmt->bind_param('s',$email);
+    $stmt->execute();
+    $result = mysqli_stmt_get_result($stmt);
+   if($result->num_rows==1)
+   {
+    $row = mysqli_fetch_assoc($result);
+    $hashed_password = $row['adminpass'];
+    if(password_verify($password,$hashed_password))
+    {
+        session_start();
+        $_SESSION['fname']=$row['fname'];
+        $_SESSION['admin']=true;
+        
+    
+
+        return 3;
+    }
+}
+}
   //LogIn will return 1 if pass & username are correct
     // will return 2 if email correct but poassword is not correct
-    //will return 3 if email and passowrd are not correct
+    //will return 3 then he is a manager
+    //will return 4 if email &pass are not correct
 function logIn($conn, $email , $password)
 {
    
@@ -42,6 +66,7 @@ function logIn($conn, $email , $password)
     {
         session_start();
         $_SESSION['fname']=$row['Fname'];
+    
 
         return 1;
     }
@@ -53,11 +78,19 @@ function logIn($conn, $email , $password)
 
    
 }
-else{
-   return 3;
+else {
+    ManagerLogIn($conn, $email , $password);
+   
+
+}
+
+
+
+//if all conditions failed
+   return 4;
 
         
-}
+
 
  
 
