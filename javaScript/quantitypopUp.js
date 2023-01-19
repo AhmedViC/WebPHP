@@ -2,6 +2,7 @@
 
 
     const products = document.querySelectorAll('.productsContainer');
+  
 
 
     for(var i = 0 ; i<products.length;i++)
