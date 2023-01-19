@@ -105,7 +105,7 @@ function retriveProducts($conn)
              
                <h3><a href="productDetails.php?id='.$row['Product_ID'].'">'.$row['Name'].'</a></h3>
                <h4>'.$row['price'].'</h4>
-               <Button  type="button" class="open">aa</Button>
+               <Button  type="button" class="open"><i class="fa-solid fa-cart-shopping"></i></Button>
              
                <input type="hidden" class="pr_id" id="producId" value="'.$row['Product_ID'].'">
                <input type="hidden" class="pr_name" name="productName" value="'.$row['Name'].'">
