@@ -81,12 +81,22 @@ function printTotalItems()
 {
     if(isCartExist())
     {
+    $totalquantity = 0;
+    foreach( $_SESSION["shoppingcart"] as $p_id)
+    {
+      
+        
+       $totalquantity+=$p_id["quantity"];
+        
     
-    echo '
-    '.count($_SESSION["shoppingcart"]).'
-    ';
     }
-    else echo '0';
+    echo $totalquantity; 
+}
+    else{
+        echo 
+        '0 SAR';
+    }
+
 
 }
 
@@ -108,6 +118,23 @@ function printTotalprice()
 else{
     echo 
     '0 SAR';
+}
+
+}
+
+function getTotalPrice()
+{
+    if(isCartExist())
+    {
+    $totalprice = 0;
+    foreach( $_SESSION["shoppingcart"] as $p_id)
+    {
+        
+       $totalprice+=$p_id["price"];
+        
+    
+    } 
+    return $totalprice;
 }
 
 }

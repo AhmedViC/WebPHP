@@ -32,21 +32,46 @@ session_start();
                         </div>
                     </li>
                     
-                    <li><a href="ContactUs.php"> Contact Us </a></li>
+                  
                     <?php 
                  
 
     if(isset($_SESSION['fname']))
     {
-        echo ' <li><a href="includes/logout.inc.php"> Log Out </a></li>';
+        echo '
+        <li>
+        <div class="dropdown">
+            <button class="dropbtn">Account</button>
+            <div class="dropdown-content">
+
+                <a href="#"> <span class="material-symbols-outlined">
+                       
+                    </span> Profile </a>
+                    <a href="includes/logout.inc.php"> <span class="material-symbols-outlined">
+                        
+                    </span>Orders </a>
+
+                <a href="includes/logout.inc.php"> <span class="material-symbols-outlined">
+                        
+                    </span>Log Out </a>
+                  
+
+
+            </div>
+        </div>
+    </li>';
+    echo ' <li><a href="ContactUs.php"> Contact Us </a></li>';
+        echo '<li><a href="CheckOutpage.php"><i class="fa-solid fa-cart-shopping"></i></a></li>';
     }
     else{
         echo '<li><a href="loginpage.php"> Login/Register </a></li>';
+        echo ' <li><a href="ContactUs.php"> Contact Us </a></li>';
 
     }
 ?>
+ 
                 
-                    <li><a href="CheckOutpage.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                 
 
 
 

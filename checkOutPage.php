@@ -146,7 +146,7 @@ require_once('popUp.Component.php');
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
+      <form action="includes/OrderInsertion.inc.php" method="post">
       
         <div class="row">
           <div class="col-50">
@@ -161,10 +161,7 @@ require_once('popUp.Component.php');
             <input type="text" id="city" name="city" placeholder="New York">
 
             <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
-              </div>
+              
               <div class="col-50">
                 <label for="zip">Zip</label>
                 <input type="text" id="zip" name="zip" placeholder="10001">
@@ -200,10 +197,8 @@ require_once('popUp.Component.php');
           </div>
           
         </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-        </label>
-        <input type="submit" value="Continue to checkout" class="btn">
+      
+        <input type="submit" name="submit" value="Continue to checkout" class="btn">
       </form>
     </div>
   </div>

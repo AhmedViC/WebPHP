@@ -66,6 +66,7 @@ function logIn($conn, $email , $password)
     {
         session_start();
         $_SESSION['fname']=$row['Fname'];
+        $_SESSION['userID']=$row['C_id'];
     
 
         return 1;
@@ -191,6 +192,101 @@ function productDetailsQuery($conn,$id)
 
 }
 
+
+function insertOrder($conn,$customerID)
+{
+    $str=rand();
+    $orderKey = md5($str);
+    $stmt = $conn->prepare("INSERT INTO `Orders` (`OrderKey`,`CustomerID`) VALUES (?, ?);");
+    $stmt->bind_param("si",$orderKey,$customerID);
+    if($stmt->execute()>0)
+    {
+        return $orderKey;
+
+    }
+    else{
+        return 0;
+    }
+  
+  
+
+}
+
+
+function insertAnOrderItem($conn, $orderKey, $productID, $quantity)
+{
+    $stmt = $conn->prepare("INSERT INTO `OrdersDATA` (`D_OrderKey`,`ProductID`,`Quantity`) VALUES (?, ?,?);");
+    $stmt->bind_param("sii",$orderKey,$productID,$quantity);
+    
+    if($stmt->execute())
+    return true;
+    
+
+    
+
+
+
+}
+
+function insertAllItems($sessionCart,$conn,$orderKey)
+{
+
+    foreach( $sessionCart as $item)
+    {
+        $productID = $item["p_id"];
+        $productQuantity = $item["quantity"];
+        
+     insertAnOrderItem($conn,$orderKey,$productID,$productQuantity);
+    
+    } 
+
+}
+function insertPaymentDetails($conn, $orderKey, $nameOnCard,$creditNumber,$expMonth,$cvv,$expYear)
+{
+    echo 'hhi';
+    $stmt = $conn->prepare("INSERT INTO `paymentinfo` (`Nameoncard`, `CreditCardNum`, `ExpMonth`, `CVV`, `ExpYear`, `D_OrderKey`) VALUES (?,?,?,?,?,?);
+    ");
+    $stmt->bind_param("ssisis",$nameOnCard,$creditNumber,$expMonth,$cvv,$expMonth,$orderKey);
+    echo $stmt->execute();
+
+
+}
+function insertBillingDetails($conn , $orderKey, $fullName,$email,$address,$city,$zip)
+{
+    $stmt = $conn->prepare("INSERT INTO `billingaddress` (`B_OrderKey`, `FullName`, `Eamil`, `b_Address`, `City`, `ZIP`) VALUES (?,?,?,?,?,?);");
+
+
+    $stmt->bind_param("ssssss",$orderKey,$fullName,$email,$address,$city,$zip);
+    if($stmt->execute())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    };
+
+
+
+}
+function insertBill($conn,$orderKey,$purchasedate,$totalPrice,$email,$customerID)
+{
+    
+    $stmt = $conn->prepare(" INSERT INTO `bill` ( `Total_price`,
+     `date_purchase`, `CustomerEmail`, `CustomerID`, `D_OrderKey`) 
+     VALUES (?,?,?,?,?);");
+     $stmt->bind_param("sssss",$totalPrice,$purchasedate,$email,$customerID,$orderKey);
+     if($stmt->execute())
+     {
+         return true;
+     }
+     else
+     {
+         return false;
+     };
+
+
+}
 
 
 

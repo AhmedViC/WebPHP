@@ -1,6 +1,6 @@
-drop database store;
-create database store;
-use store;
+drop database storetest;
+create database storeTest;
+use storeTest;
 
 CREATE TABLE Cities (
 
@@ -32,15 +32,8 @@ adminpass varchar(100),
 birthdate date
 );
   
-CREATE TABLE Orders(
 
-
-OrderID int auto_increment primary key,
-CustomerID int not null,
- foreign key (CustomerID) REFERENCES customer(C_id)
- 
-);
-CREATE TABLE store.category (
+CREATE TABLE category (
   Category_ID INT NOT NULL,
   Category_Name VARCHAR(45) NOT NULL,
   Brand VARCHAR(45) NOT NULL,
@@ -49,7 +42,7 @@ CREATE TABLE store.category (
 
 
 
-  CREATE TABLE store.products (
+  CREATE TABLE products (
   Product_ID INT NOT NULL,
   Name VARCHAR(45) NOT NULL,
   price int,
@@ -61,36 +54,74 @@ CREATE TABLE store.category (
   foreign key (Category) REFERENCES category( Category_ID),
   PRIMARY KEY (Product_ID));
   
+CREATE TABLE Orders(
 
+
+
+OrderKey varchar(100) not null primary key,
+CustomerID int not null,
+ foreign key (CustomerID) REFERENCES customer(C_id)
+ 
+);
   
 CREATE TABLE OrdersDATA(
-OrderedID int ,
-  foreign key (OrderedID) REFERENCES Orders(OrderID),
+D_OrderKey VARCHAR(100) ,
+  foreign key (D_OrderKey) REFERENCES Orders(OrderKey),
   ProductID int not null,
  foreign key (ProductID) REFERENCES PRODUCTS( Product_ID),
-Quantity int not null
+Quantity int not null,
+primary key(D_OrderKey,ProductID)
   
   
 
 );
+CREATE TABLE PaymentInfo(
+   
+  Nameoncard VARCHAR(50),
+  CreditCardNum VARCHAR(8),
+  ExpMonth int,
+  CVV VARCHAR(3),
+  ExpYear int,
+  D_OrderKey VARCHAR(100) primary key ,
+  foreign key (D_OrderKey) REFERENCES Orders(OrderKey)
+ 
+  
+  
 
 
+
+
+
+);
+CREATE TABLE BillingAddress(
+    B_OrderKey VARCHAR(100) primary key ,
+
+  foreign key (B_OrderKey) REFERENCES Orders(OrderKey),
+   FullName VARCHAR(50),
+  Eamil VARCHAR(50),
+  b_Address VARCHAR(20),
+  City VARCHAR(10),
+  ZIP varchar(5)
+);
 CREATE TABLE Bill(
 
-BillNo int auto_increment primary key,
+BillID int auto_increment primary key,
 Total_price int not null,
 date_purchase date,
 CustomerEmail varchar(30),
 CustomerID int not null,
  foreign key (CustomerID) REFERENCES customer(C_id),
  
-OrderID int ,
- foreign key (OrderID) REFERENCES orders(OrderID)
+  D_OrderKey VARCHAR(100)  ,
+  foreign key (D_OrderKey) REFERENCES Orders(OrderKey)
+ 
+  
+  
 
 
 );
 
-use store;
+
 INSERT INTO `Category` (`Category_ID`,`Category_Name`,`Brand`) VALUES
  (11112,'Mobiles & Accessories','Samsung')
 ,(11113,'Mobiles & Accessories','Apple')
@@ -105,16 +136,16 @@ INSERT INTO `Category` (`Category_ID`,`Category_Name`,`Brand`) VALUES
 ,(11122,'Accessories','null.');
 
 
-use store;
+
 INSERT INTO `cities` (`CityID`,`CityName`) VALUES 
 (755,'ALQTIF'),
 (766,'KHOBAR'),
 (788,'DAMMAM');
 
-UPDATE `store`.`products` SET `p_description` = 'Samsung Galaxy S20, the smallest of the S20 family, comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage. T' WHERE (`Product_ID` = '46');
+UPDATE `products` SET `p_description` = 'Samsung Galaxy S20, the smallest of the S20 family, comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage. T' WHERE (`Product_ID` = '46');
 
-use store;
-INSERT INTO `products` (`Product_ID`,`Name`,`price`,`Picture`,`Stock`,`Category`) VALUES (46,'Galaxy S20',2000,'images/SamsungS20.jpeg',55,11112)
+
+INSERT INTO `products` (`Product_ID`,`Name`,`price`,`Picture`,`Stock`,`Category`) VALUES (46,'Galaxy S20',2000,'images/SamsungS20.png',55,11112)
 ,(47,'Galaxy S20 plus',2000,'images/iphone.jpg',68,11112)
 ,(48,'Galaxy S21 ultra',2000,'images/iphone.jpg',32,11112)
 ,(49,'Galaxy Z Flip',2000,'images/Flipz.png',29,11112)
@@ -128,22 +159,31 @@ INSERT INTO `products` (`Product_ID`,`Name`,`price`,`Picture`,`Stock`,`Category`
 ,(75,'Creator 7i',2000,'images/iphone.jpg',25,11119)
 , (76,'V14 Gen2',2000,'images/iphone.jpg',22,11119)
 ,(77,'ThinkBook 15p',2000,'images/iphone.jpg',27,11119);
-INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('111', 'ALRIYADH');
-INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('222', 'JEDDAH');
-INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('333', 'ALHASA');
-INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('999', 'JAZAN');
-INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('011', 'ABHA');
+INSERT INTO `cities` (`CityID`, `CityName`) VALUES ('111', 'ALRIYADH');
+-- INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('222', 'JEDDAH');
+-- INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('333', 'ALHASA');
+-- INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('999', 'JAZAN');
+-- INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('011', 'ABHA');
 
 
 
 
+delimiter //
+create trigger stockUpdate after insert on ordersdata
+for each row
+
+begin
+update products
+set stock = stock - new.Quantity where new.productID=products.product_id;
 
 
-INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Ahmed', 'AlMAGHREBI', 'ahmed@gmail.com', '1234', '1999-01-01', '0667777777', 'Hay alshati', '788');
-INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Abdo', 'Alzahrani', 'abdo@gmail.com', '1234', '1999-01-01', '0667717777', 'Hay alshati', '788');
-INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Mohammed', 'AlGhawez', 'mo@gmail.com', '1234', '1999-01-01', '0667227777', 'Salem', '755');
-INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Hussain', 'Naji', 'ha@gmail.com', '1234', '1999-01-01', '0667217777', 'Salem', '755');
-INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Salam', 'Kamal', 'mo1@gmail.com', '1234', '1999-01-01', '0667227777', 'Alarjan', '766');
-INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Ali', 'Kamal', 'saaaa12@gmail.com', '1234', '1999-01-01', '0667220077', 'Alarjan', '766');
-INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Hakeem', 'Saud', 'Hakeem@gmail.com', '1234', '1999-01-01', '0667229877', 'Alarjan', '766');
-INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Salman', 'Kamal', 'saal11@gmail.com', '1234', '1999-01-01', '0667227722', 'Alarjan', '766');
+end //
+
+INSERT INTO `customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Ahmed', 'AlMAGHREBI', 'ahmed@gmail.com', '1234', '1999-01-01', '0667777777', 'Hay alshati', '111');
+-- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Abdo', 'Alzahrani', 'abdo@gmail.com', '1234', '1999-01-01', '0667717777', 'Hay alshati', '788');
+-- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Mohammed', 'AlGhawez', 'mo@gmail.com', '1234', '1999-01-01', '0667227777', 'Salem', '755');
+-- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Hussain', 'Naji', 'ha@gmail.com', '1234', '1999-01-01', '0667217777', 'Salem', '755');
+-- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Salam', 'Kamal', 'mo1@gmail.com', '1234', '1999-01-01', '0667227777', 'Alarjan', '766');
+-- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Ali', 'Kamal', 'saaaa12@gmail.com', '1234', '1999-01-01', '0667220077', 'Alarjan', '766');
+-- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Hakeem', 'Saud', 'Hakeem@gmail.com', '1234', '1999-01-01', '0667229877', 'Alarjan', '766');
+-- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Salman', 'Kamal', 'saal11@gmail.com', '1234', '1999-01-01', '0667227722', 'Alarjan', '766');

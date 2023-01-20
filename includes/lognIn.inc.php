@@ -18,6 +18,7 @@ if(isset($_POST["submit"]))
     $state = logIn($conn, $email , $passw);
     if($state==1)
     {
+        
         header("location: ../HomePage.php?m=loginInSuccessfuly");
     
        
