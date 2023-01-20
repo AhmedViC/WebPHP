@@ -10,27 +10,30 @@ function addItemtoCart($productID, $ProductName, $ProductPrice, $productQuantity
 
 $cart_array = array(
     $productID=>array(
+        'p_id'=>$productID,
 
         'name'=>$ProductName,
         'price'=>$ProductPrice*$productQuantity,
-        'quantity'=>$productQuantity
+        'quantity'=>$productQuantity,
+        'img'=>$productImg
 
 
     )
     );
 if(empty($_SESSION['shoppingcart']))
+
 {
     $_SESSION['shoppingcart']=$cart_array;
 
-
-  
-
-
-       
-
-
 }
-else{
+
+    else if(isIteminThecart($productID,$_SESSION["shoppingcart"]))
+    {
+        $_SESSION["shoppingcart"][$productID]['quantity']=$productQuantity;
+
+    }
+
+    else{
     $_SESSION["shoppingcart"] = array_merge(
         $_SESSION["shoppingcart"],
         $cart_array
@@ -43,6 +46,7 @@ foreach( $_SESSION["shoppingcart"] as $p_id)
     echo  $p_id['quantity'].'<br>';
 
 }
+
 }
 
 function displayCartItems()
@@ -51,12 +55,19 @@ function displayCartItems()
     {
     foreach( $_SESSION["shoppingcart"] as $p_id)
 {
+   
     
-    echo '<form>
+    echo '<form class="cartItems">
     <p><a href="#">'
     .$p_id['name'].
-    '</a> <span class="price">
-    '.$p_id['price'].'</span></p></form>';
+    '</a><span class="qData">'.$p_id['quantity'].'</span><span class="editButton"><button title="modify" type="button"><i class="fa-solid fa-pen-to-square"></i></button></span><span class="price">
+    '.$p_id['price'].'</span></p>
+    <input type="hidden" class="pr_id" id="producId" value="'.$p_id['p_id'].'">
+    <input type="hidden" class="pr_name" name="productName" value="'.$p_id['name'].'">
+    <input type="hidden"  class="pr_price" name="productPrice" value="'.$p_id['price'].'">
+    <input type="hidden"  class="pr_price" name="productPrice" value="'.$p_id['quantity'].'">
+    <input type="hidden"  class="pr_price" name="productPrice" value="'.$p_id['img'].'">
+    </form>';
     
 
 }
@@ -111,7 +122,9 @@ function isCartExist()
     }
 }
 
-function isIteminThecart($index,$array)
+function isIteminThecart($p_id,$cart)
 {
     // array_key_exists() ;
+    return array_key_exists($p_id,$cart);
+
 }

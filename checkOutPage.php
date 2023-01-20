@@ -21,6 +21,7 @@ require_once('includes/shoppingcart.fun.inc.php')
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+        <script src="https://kit.fontawesome.com/42f7232704.js" crossorigin="anonymous"></script>
         
 <style>
 
@@ -105,6 +106,15 @@ label {
 a {
   color: #2196F3;
 }
+.editButton button{
+  background-color: #f2f2f2;
+  border: none;
+  color:black;
+ 
+}
+.editButton button:hover{
+  color: #2196F3;
+}
 
 hr {
   border: 1px solid lightgrey;
@@ -127,9 +137,12 @@ span.price {
 </style>
 </head>
 <body>
+
 <?php
 require_once('header.php');
+require_once('popUp.Component.php');
 ?>
+
 <div class="row">
   <div class="col-75">
     <div class="container">

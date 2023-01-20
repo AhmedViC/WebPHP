@@ -1,7 +1,5 @@
 
-
-
-    const products = document.querySelectorAll('.productsContainer');
+    const products = document.querySelectorAll('.cartItems');
 
 
     for(var i = 0 ; i<products.length;i++)
@@ -17,21 +15,17 @@
             openpopUp(id,price,Pname,img)
         })
     }
-  
-     
-
-
-function closepopUp()
-{
-
-    const popUp = document.getElementById('popUp');
-    console.log(document.getElementById('popUp'))
-       popUp.style.display="none"
-       console.log(popUp.style.display)
+    function closepopUp()
+    {
     
-       console.log('hi')
-}
-
+        const popUp = document.getElementById('popUp');
+        console.log(document.getElementById('popUp'))
+           popUp.style.display="none"
+           console.log(popUp.style.display)
+        
+           console.log('hi')
+    }
+     
 function openpopUp(productId, pPrice,pname,Pimg)
 {
   
