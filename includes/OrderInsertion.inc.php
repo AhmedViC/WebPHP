@@ -6,7 +6,7 @@
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
     session_start();
-    echo $_SESSION['fname'],empty($_SESSION['shoppingcart']);
+   
     if(isset($_SESSION['fname'])&&isset($_POST['submit'])&&!empty($_SESSION['shoppingcart']))
     {
         $nameOncard=$_POST['cardname'];
@@ -24,16 +24,20 @@ error_reporting(E_ALL);
         $zip = $_POST['zip'];
         
         
-        
+        echo $customerID.'<br>';
 
         $OrderKey = insertOrder($conn,$customerID);
+   
+ 
+        insertAllItems($_SESSION['shoppingcart'],$conn,$OrderKey);
         insertPaymentDetails($conn,$OrderKey,$nameOncard,$cardnum,$expMonth,$cvv,$expYear);
         insertBillingDetails($conn,$OrderKey,$fullname,$email,$address,$city,$zip);
         insertBill($conn,$OrderKey,$purchaseDate,$totalPrice,$email,$customerID);
         echo 'done!!';
+        saveorderInCookie($OrderKey);
         unset($_SESSION['shoppingcart']);
-      
-        header("location: ../HomePage.php");
+
+        // header("location: ../orderThankYou.php");
 
 
 
@@ -42,7 +46,8 @@ error_reporting(E_ALL);
     }
 
     else{
-        header("location: ../HomePage.php?m=errorfailed");
+        echo $_COOKIE[2];
+   displayOrders($_SESSION['userID'],$conn);
 
         
     }

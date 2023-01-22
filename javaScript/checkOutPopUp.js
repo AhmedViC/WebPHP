@@ -1,7 +1,7 @@
 
 
 
-    const products = document.querySelectorAll('.productsContainer');
+    const products = document.querySelectorAll('.cartItems');
   
 
 
@@ -10,12 +10,14 @@
        
         const id= products[i].getElementsByClassName('pr_id')[0].value;
         const price = products[i].getElementsByClassName('pr_price')[0].value;
-
        const Pname =  products[i].getElementsByClassName('pr_name')[0].value
         const btn = products[i].getElementsByTagName('button')[0];
-        const img = products[i].getElementsByTagName('img')[0];
+        const img = products[i].getElementsByClassName('pr_img')[0].value;
+        console.log(img)
+    
         
         const stock = products[i].getElementsByClassName('pr_stock')[0].value;
+        const quanity = products[i].getElementsByClassName('pr_quantity')[0].value;
         console.log(stock)
         btn.addEventListener('click',function()
         {
@@ -41,7 +43,7 @@ function closepopUp()
 
 function openpopUp(productId, pPrice,pname,Pimg,stock)
 {
-    console.log(pPrice)
+
   
 
 
@@ -51,10 +53,10 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
    const popUp = document.getElementById('popUp')
    const price= document.getElementById('price')
    const p_name= document.getElementById('p_name')
-  
    p_name.innerHTML=pname;
    price.innerHTML='price: '+pPrice+'SAR';
-   img.src=Pimg.src;
+   img.src=Pimg;
+  
 
    popUp.style.display="flex"
    const quantityInput= document.getElementById('inputQ')
@@ -97,19 +99,18 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
        const hiddenName= document.getElementById('productNames')
        const hiddenPrice= document.getElementById('productPrice')
        const hiddenId= document.getElementById('productId')
-       const hiddenQuantity= document.getElementById('productQ') 
-       const hiddenstock = document.getElementById('pr_stock')
-
-     
+       const hiddenQuantity= document.getElementById('productQ')
+       const hiddenStock = document.getElementById('pr_stock')
+       hiddenStock.value=stock
+       console.log(hiddenStock.value)
+  
     
    const productImg = document.getElementById('productImg')
        hiddenName.value=pname
        hiddenPrice.value=pPrice
        hiddenId.value=productId
-       productImg.value=Pimg.src
+       productImg.value=Pimg.value
        hiddenQuantity.value=quantityInput.value
-       hiddenstock.value=stock
-       console.log(hiddenstock.value)
        console.log('quanity' ,hiddenQuantity.value)
        console.log('price' ,hiddenPrice.value)
        console.log('hidden name',hiddenName.getAttribute("value"))

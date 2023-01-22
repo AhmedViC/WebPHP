@@ -1,0 +1,42 @@
+.containerHeader{
+
+    border-bottom: 1px solid black;
+   
+    text-align: center;
+}
+
+.ordersContainer{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 20px;
+    border-radius: 20px;
+   
+}
+.ordersContainerContainer{
+   
+    display: grid;
+    grid-template-columns: 30rem 30rem;
+
+
+    justify-content: center;
+    border-radius: 20px;
+ 
+}
+
+table{
+    text-align: center;
+
+
+  
+    
+}
+.titleHeading{
+    text-align: center;
+}
+td{
+    padding: 20px;
+    
+}

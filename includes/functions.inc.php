@@ -131,6 +131,7 @@ function retriveProducts($conn)
         $price=$row['price'];
         $pname=$row['Name'];
         $pid = $row['Product_ID'];
+     
        echo ' <form><div class="productsContainer">
  
        <div >
@@ -144,6 +145,7 @@ function retriveProducts($conn)
                <input type="hidden" class="pr_id" id="producId" value="'.$row['Product_ID'].'">
                <input type="hidden" class="pr_name" name="productName" value="'.$row['Name'].'">
                <input type="hidden"  class="pr_price" name="productPrice" value="'.$row['price'].'">
+               <input type="hidden"  class="pr_stock" name="stock" value="'.$row['Stock'].'">
               
               
 
@@ -215,11 +217,12 @@ function insertOrder($conn,$customerID)
 
 function insertAnOrderItem($conn, $orderKey, $productID, $quantity)
 {
+    echo 'here';
     $stmt = $conn->prepare("INSERT INTO `OrdersDATA` (`D_OrderKey`,`ProductID`,`Quantity`) VALUES (?, ?,?);");
     $stmt->bind_param("sii",$orderKey,$productID,$quantity);
     
-    if($stmt->execute())
-    return true;
+   $stmt->execute();
+  
     
 
     
@@ -287,8 +290,120 @@ function insertBill($conn,$orderKey,$purchasedate,$totalPrice,$email,$customerID
 
 
 }
+/*
+@param order key
+
+*/
+
+function saveorderInCookie($orderKey)
+{
+    setcookie($orderKey,$orderKey,time()+10000000,"/");
+   
 
 
+}
+
+
+function deleteAllCookies()
+{
+    foreach ( $_COOKIE as $key => $value )
+{
+  
+   
+    
+}
+
+}
+/*
+
+@return copy orders saved in cookies to an array and return it
+*/
+function getPreviousOrders()
+{
+   
+    $counter=0;
+    for(reset($_COOKIE);$element = key($_COOKIE);next($_COOKIE))
+    {
+        
+        $previousOrders[$counter]=$_COOKIE[$element];
+        $counter++;
+    
+    }
+   
+    return  $previousOrders;
+}
+
+function retriveOrderData($orderID,$conn)
+{
+   
+    $stmt = $conn->prepare("SELECT * from OrdersDATA,Products where D_OrderKey=?  and productID=product_ID;");
+    $stmt->bind_param("s",$orderID);
+    
+     $stmt->execute();
+    
+     $result = mysqli_stmt_get_result($stmt);
+
+     while($row = mysqli_fetch_assoc($result))
+     {
+        
+         
+       echo '     
+       <div class="containerHeader"><H2>Order</H2></div>
+        <div class="containerBody">
+           
+                <table border="1">
+                    <thead>
+                       <td>
+                        Name
+                       </td>
+                       <td>
+                       Quantity
+                       </td>
+                       <td>
+                        Price
+                       </td>
+                    </thead><tbody>
+       <td>
+          '.$row['Name'].'
+          </td>
+          <td>
+         '.$row['Quantity'].'
+          </td>
+          <td>
+          2000
+          </td>
+
+   </tbody>
+</table>
+
+
+</div>
+</div>'
+
+                          ;
+                        
+
+
+}
+
+}
+
+function displayOrders($customerID,$conn)
+{
+    $cookieArray = getPreviousOrders();
+   
+     for($i=1 ; $i<count($cookieArray);$i++)
+    {
+        echo ' <div class="ordersContainer">
+        ';
+
+       retriveOrderData($cookieArray[$i],$conn);
+    }
+    echo ' </div>
+        ';
+
+  
+}
 
 
 

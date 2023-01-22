@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<title> WOW Store </title>
-<?php
-require_once('includes/dbConn.inc.php');
-require_once('includes/functions.inc.php');
-
-?>
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thank You!</title>
     <script src="https://kit.fontawesome.com/42f7232704.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css"
@@ -26,55 +20,31 @@ require_once('includes/functions.inc.php');
         rel="stylesheet">
         <script src="Javascript/quantitypopUp.js" defer></script>
         <script src="Javascript/purchaseMsg.js" defer></script>
-        
-        
+
 </head>
-
 <body>
-<?php
- 
+    <?php
+    require_once('header.php');
+    if(!isset($_SESSION['fname']))
+    {
+        header("location: homepage.php?error=notAllowed");
 
-   
+    }
+    echo $_SESSION['userID'];
+    echo $_COOKIE[2];
 
 
-require_once('header.php');
-require_once('popUp.Component.php');
+
 ?>
-  
+<div class="thankYou">
+    <h2>
+        Thank Your For Your Order!
+    </h2>
+   <a href="homepage.php">Go Back To Home Page</a>
+</div>    
 
-
-
-    <!--------------------ADV-------------------->
-    <div class="rows">
-        <div class="col-2">
-            <h1>Check Out The Major Disscounts<br> On Our Smartphones !!</h1>
-            <p>Apple and Samsung has just realesed the best phones of year,<br> don't miss the opportunity to buy one
-                right now !
-            </p>
-            <a href="" class="btn">Check out Now &#8594;</a>
-        </div>
-        <div class="col-2">
-            <img src="SamsungApple.png" width="300px">
-        </div>
-    </div>
-
-
-    <!--products GRID
-    each item ends with 3 divs-->
-    <div class="flexGrid">
-        <div class="productsGridContainer">
-         <?php
-    retriveProducts($conn);
-         ?>
-        </div>
-    </div>
-    <!------------------Footer------------->
-   <?php
-
+<?php
 require_once('footer.php');
 ?>
-
-
-
-
 </body>
+</html>

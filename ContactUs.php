@@ -43,7 +43,7 @@ include_once('header.php');
     
 <!------------FIRST GRID------------------->
 <div id="TextForm">
-<form action="includes/feedbackemail.inc.php" method="post">
+<form>
 <input name='fname' type="text" placeholder="First Name" required>
 <input name='lname' type="text" placeholder="Last Name" required>
 <input name = 'email' type="text" placeholder="Email" required>

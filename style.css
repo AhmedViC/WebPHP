@@ -6,7 +6,25 @@ body{
     box-sizing: border-box;
     background-color: deepskyblue;
   }
+.thankYou{
+ 
+  padding: 10rem;
+  text-align: center;
 
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.thankYou a{
+  background-color: deepskyblue;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+}
 .popUpBody
 {
   display: flex;
@@ -34,6 +52,10 @@ border-radius: 20px;
   background-color: #538FF7;
   color: white;
 }
+.stockError{
+  color: red;
+
+}
 
 #cartB{
   margin-bottom: 5px;
@@ -44,7 +66,7 @@ border-radius: 20px;
   text-align: center;
   font-family: monospace;
   font-size: 1.1rem;
-  width: 40px;
+  width: 60px;
   margin:  auto;
 
 }

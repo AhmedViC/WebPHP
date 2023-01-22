@@ -22,6 +22,7 @@ require_once('includes/shoppingcart.fun.inc.php')
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
         <script src="https://kit.fontawesome.com/42f7232704.js" crossorigin="anonymous"></script>
+        <script src="Javascript/checkOutPopUp.js" defer></script>
         
 <style>
 

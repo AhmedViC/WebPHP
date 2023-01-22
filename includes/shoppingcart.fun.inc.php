@@ -4,7 +4,7 @@
 //functions related to shopping cart
 // remaming: delete cart item, updateItemQuantity
 
-function addItemtoCart($productID, $ProductName, $ProductPrice, $productQuantity, $productImg)
+function addItemtoCart($productID, $ProductName, $ProductPrice, $productQuantity, $productImg,$stock)
 {
 
 
@@ -13,39 +13,49 @@ $cart_array = array(
         'p_id'=>$productID,
 
         'name'=>$ProductName,
-        'price'=>$ProductPrice*$productQuantity,
+        'price'=>$ProductPrice,
         'quantity'=>$productQuantity,
-        'img'=>$productImg
+        'tPrice'=>$productQuantity*$ProductPrice,
+        'img'=>$productImg,
+        'stock'=>$stock
 
 
     )
     );
+ 
 if(empty($_SESSION['shoppingcart']))
 
 {
     $_SESSION['shoppingcart']=$cart_array;
 
+
 }
+
 
     else if(isIteminThecart($productID,$_SESSION["shoppingcart"]))
     {
         $_SESSION["shoppingcart"][$productID]['quantity']=$productQuantity;
+        $_SESSION["shoppingcart"][$productID]['tPrice']=$productQuantity*$ProductPrice;
 
     }
 
     else{
-    $_SESSION["shoppingcart"] = array_merge(
-        $_SESSION["shoppingcart"],
-        $cart_array
-        );
-}
-foreach( $_SESSION["shoppingcart"] as $p_id)
-{
-    echo  $p_id['name'].'<br>';
-    echo  $p_id['price'].'<br>';
-    echo  $p_id['quantity'].'<br>';
+      
+    $_SESSION["shoppingcart"][$productID]=array(
+        'p_id'=>$productID,
 
+        'name'=>$ProductName,
+        'price'=>$ProductPrice,
+        'tPrice'=>$productQuantity*$ProductPrice,
+        'quantity'=>$productQuantity,
+        'img'=>$productImg,
+        'stock'=>$stock
+
+
+    );
+        ;
 }
+
 
 }
 
@@ -55,19 +65,28 @@ function displayCartItems()
     {
     foreach( $_SESSION["shoppingcart"] as $p_id)
 {
+    
    
     
-    echo '<form class="cartItems">
+    echo '<div class="cartItems">
     <p><a href="#">'
     .$p_id['name'].
     '</a><span class="qData">'.$p_id['quantity'].'</span><span class="editButton"><button title="modify" type="button"><i class="fa-solid fa-pen-to-square"></i></button></span><span class="price">
-    '.$p_id['price'].'</span></p>
+    '.$p_id['tPrice'].'</span></p>
     <input type="hidden" class="pr_id" id="producId" value="'.$p_id['p_id'].'">
     <input type="hidden" class="pr_name" name="productName" value="'.$p_id['name'].'">
     <input type="hidden"  class="pr_price" name="productPrice" value="'.$p_id['price'].'">
-    <input type="hidden"  class="pr_price" name="productPrice" value="'.$p_id['quantity'].'">
-    <input type="hidden"  class="pr_price" name="productPrice" value="'.$p_id['img'].'">
-    </form>';
+    <input type="hidden"  class="pr_stock" name="productPrice" value="'.$p_id['stock'].'">
+    <input type="hidden"  class="pr_img" name="productimg" value="'.$p_id['img'].'">
+    <input type="hidden"  class="pr_quantity" name="productPrice" value="'.$p_id['quantity'].'">
+    <input type="hidden"  class="pr_stock" name="productPrice" value="'.$p_id['tPrice'].'">
+    
+    
+    </div>
+   
+   
+ 
+    ';
     
 
 }
@@ -108,7 +127,7 @@ function printTotalprice()
     foreach( $_SESSION["shoppingcart"] as $p_id)
     {
         
-       $totalprice+=$p_id["price"];
+       $totalprice+=$p_id["tPrice"];
         
     
     } 
@@ -130,7 +149,7 @@ function getTotalPrice()
     foreach( $_SESSION["shoppingcart"] as $p_id)
     {
         
-       $totalprice+=$p_id["price"];
+       $totalprice+=$p_id["tPrice"];
         
     
     } 
@@ -152,6 +171,7 @@ function isCartExist()
 function isIteminThecart($p_id,$cart)
 {
     // array_key_exists() ;
+  
     return array_key_exists($p_id,$cart);
 
 }

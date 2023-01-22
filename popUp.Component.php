@@ -12,6 +12,7 @@
   <button type="submit" id="cartB">
   <i class="fa-solid fa-cart-shopping"></i>
   </button>
+ <span class="stockError" hidden id="err"> That excceeds the available stock!</span>
   <Button  type="button" class="open" onClick="closepopUp()">
     close
   </button>
@@ -20,6 +21,7 @@
                <input type="hidden"  name="productPrice" id="productPrice">
                <input type="hidden"  name="Quantity" id="productQ">
                <input type="hidden"  name="Pimg" id="productImg">
+               <input type="hidden"  name="stock" id="pr_stock">
             
 
               
