@@ -8,7 +8,7 @@
 
   <h4 id="price"></h4>
   <label for="quantity">Quantity</label>
-  <input class="popInput" type="number" id="inputQ" name="quantity" value="1">
+  <input class="popInput" type="number" id="inputQ" name="quantity" value="1" required>
   <button type="submit" id="cartB">
   <i class="fa-solid fa-cart-shopping"></i>
   </button>

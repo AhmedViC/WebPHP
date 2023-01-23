@@ -68,12 +68,14 @@ function displayCartItems()
     
    
     
-    echo '<div class="cartItems">
+    echo '<form action="includes/deleteCartItem.inc.php" method="post"><div class="cartItems">
     <p><a href="#">'
     .$p_id['name'].
-    '</a><span class="qData">'.$p_id['quantity'].'</span><span class="editButton"><button title="modify" type="button"><i class="fa-solid fa-pen-to-square"></i></button></span><span class="price">
+    '</a><span class="qData">'.$p_id['quantity'].'</span><span class="editButton"><button title="modify" type="button">
+    <i class="fa-solid fa-pen-to-square"></i></button>
+    </span><span class="editButton"><button name="delete" type="submit"><i class="fa-solid fa-xmark"></i></button></span><span class="price">
     '.$p_id['tPrice'].'</span></p>
-    <input type="hidden" class="pr_id" id="producId" value="'.$p_id['p_id'].'">
+    <input type="hidden" class="pr_id" name="producId" id="producId" value="'.$p_id['p_id'].'">
     <input type="hidden" class="pr_name" name="productName" value="'.$p_id['name'].'">
     <input type="hidden"  class="pr_price" name="productPrice" value="'.$p_id['price'].'">
     <input type="hidden"  class="pr_stock" name="productPrice" value="'.$p_id['stock'].'">
@@ -83,6 +85,7 @@ function displayCartItems()
     
     
     </div>
+    </form>
    
    
  
@@ -116,6 +119,12 @@ function printTotalItems()
         '0 SAR';
     }
 
+
+}
+
+function deleteCartItem($productID)
+{
+    unset($_SESSION['shoppingcart'][$productID]);
 
 }
 

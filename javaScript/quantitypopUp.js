@@ -64,6 +64,17 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
    quantityInput.addEventListener('input',(event)=>
    {
     console.log('check')
+    if(parseInt(quantityInput.value)<=0)
+    {
+        popUpButton.disabled=true;
+        return;
+
+
+    }
+    else{
+        popUpButton.disabled=false;
+
+    }
     if(parseInt(stock)<parseInt(quantityInput.value))
 
     {
