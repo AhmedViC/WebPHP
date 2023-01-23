@@ -26,18 +26,22 @@ function checkEmail($conn,$email)
 
 function ManagerLogIn($conn, $email , $password)
 {
-    $stmt = $conn->prepare("SELECT * FROM store.storeadmin where id=?");
+    echo $email;
+    $stmt = $conn->prepare("SELECT * FROM store.storeadmin where email=?");
     $stmt->bind_param('s',$email);
     $stmt->execute();
     $result = mysqli_stmt_get_result($stmt);
+  
    if($result->num_rows==1)
    {
     $row = mysqli_fetch_assoc($result);
     $hashed_password = $row['adminpass'];
+   
     if(password_verify($password,$hashed_password))
     {
         session_start();
         $_SESSION['fname']=$row['fname'];
+       
         $_SESSION['admin']=true;
         
     
@@ -79,11 +83,13 @@ function logIn($conn, $email , $password)
 
    
 }
-else {
-    ManagerLogIn($conn, $email , $password);
+
+else{
+  return ManagerLogIn($conn, $email , $password);
+}
    
 
-}
+
 
 
 

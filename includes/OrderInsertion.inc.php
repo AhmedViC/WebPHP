@@ -46,9 +46,7 @@ error_reporting(E_ALL);
     }
 
     else{
-        echo $_COOKIE[2];
-   displayOrders($_SESSION['userID'],$conn);
-
+       header("location: ../Checkoutpage.php?error=anErrorOccured")
         
     }
 

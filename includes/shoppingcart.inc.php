@@ -29,7 +29,7 @@ if(isset($_SESSION['fname']))
 }
 else
 {
-    header("location: ../homepage.php?error=logInNeeded");
+    header("location: ../LoginPage.php?error=logInNeeded");
 
 }
 

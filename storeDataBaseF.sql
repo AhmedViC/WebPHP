@@ -187,3 +187,6 @@ INSERT INTO `customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phone
 -- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Ali', 'Kamal', 'saaaa12@gmail.com', '1234', '1999-01-01', '0667220077', 'Alarjan', '766');
 -- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Hakeem', 'Saud', 'Hakeem@gmail.com', '1234', '1999-01-01', '0667229877', 'Alarjan', '766');
 -- INSERT INTO `store`.`customer` (`Fname`, `Lname`, `email`, `u_pass`, `birthdate`, `phoneNumber`, `district`, `City_id`) VALUES ('Salman', 'Kamal', 'saal11@gmail.com', '1234', '1999-01-01', '0667227722', 'Alarjan', '766');
+
+-- admin password is aa
+INSERT INTO `store`.`storeadmin` (`email`, `id`, `fname`, `lname`, `adminpass`, `birthdate`) VALUES ('ahmedee@gmail.com', '111', 'ahmed', 'rami', '$2y$10$g7lSFbcp/4W3OEztJrGEVOxl1rMDD3NVU6sfg5q0OM9G.AXsc1b1C', '2001-10-10');
