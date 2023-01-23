@@ -2,8 +2,8 @@
 
 session_start();
 
-unset($_SESSION['fname']);
-unset( $_SESSION["shoppingcart"]);
+session_unset();
+
     
 session_destroy();
 

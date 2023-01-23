@@ -31,23 +31,26 @@ function ManagerLogIn($conn, $email , $password)
     $stmt->bind_param('s',$email);
     $stmt->execute();
     $result = mysqli_stmt_get_result($stmt);
+
   
    if($result->num_rows==1)
    {
     $row = mysqli_fetch_assoc($result);
     $hashed_password = $row['adminpass'];
-   
+   echo 'output'.password_verify($password,$hashed_password);
     if(password_verify($password,$hashed_password))
     {
         session_start();
         $_SESSION['fname']=$row['fname'];
        
-        $_SESSION['admin']=true;
+        $_SESSION['role']='admin';
+        echo 'entered';
         
     
 
-        return 3;
+        
     }
+    
 }
 }
   //LogIn will return 1 if pass & username are correct
@@ -71,22 +74,22 @@ function logIn($conn, $email , $password)
         session_start();
         $_SESSION['fname']=$row['Fname'];
         $_SESSION['userID']=$row['C_id'];
+        $_SESSION['role']='customer';
+        return;
     
 
-        return 1;
     }
-    else{
-       return 2;
-    
-            
-    }
+  
 
    
 }
-
 else{
-  return ManagerLogIn($conn, $email , $password);
+    ManagerLogIn($conn,$email,$password);
 }
+
+
+
+
    
 
 
@@ -94,7 +97,7 @@ else{
 
 
 //if all conditions failed
-   return 4;
+
 
         
 

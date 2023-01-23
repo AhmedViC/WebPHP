@@ -16,27 +16,23 @@ if(isset($_POST["submit"]))
     //will return 3 if email and passowrd are not correct
     
     $state = logIn($conn, $email , $passw);
-    if($state==1)
+    if(isset($_SESSION['role']))
     {
-      
+        if($_SESSION['role']=='customer')
+        {
+            header("location: ../HomePage.php?m=loginInSuccessfuly");
+        }
+        else if($_SESSION['role']=='admin')
+        {
+            header("location: ../AdminPage.php"); 
+        }
         
-        header("location: ../HomePage.php?m=loginInSuccessfuly");
-    
-       
+        
     }
-    else if($state==2)
-    {
-        header("location: ../LoginPage.php?error=falsePassword"); 
-       }
-       else if($state==3)
-       {
-           header("location: ../AdminPage.php"); 
-          }
-          else if($state==4)
-          {
-              header("location: ../LoginPage.php?error=incorrectEmail"); 
-             }
-
+    else{
+        header("location: ../LoginPage.php?error=incorrectEmail"); 
+    }
+  
 
   
    
