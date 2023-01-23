@@ -142,23 +142,27 @@ INSERT INTO `cities` (`CityID`,`CityName`) VALUES
 (766,'KHOBAR'),
 (788,'DAMMAM');
 
-UPDATE `products` SET `p_description` = 'Samsung Galaxy S20, the smallest of the S20 family, comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage. T' WHERE (`Product_ID` = '46');
+UPDATE `products` SET `p_description` = 'Samsung Galaxy S20, the smallest of the S20 family, comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage' WHERE (`Product_ID` = '46');
 
 
-INSERT INTO `products` (`Product_ID`,`Name`,`price`,`Picture`,`Stock`,`Category`) VALUES (46,'Galaxy S20',2000,'images/SamsungS20.png',55,11112)
-,(47,'Galaxy S20 plus',2000,'images/iphone.jpg',68,11112)
-,(48,'Galaxy S21 ultra',2000,'images/iphone.jpg',32,11112)
-,(49,'Galaxy Z Flip',2000,'images/Flipz.png',29,11112)
-,(56,'Iphone X',2000,'images/iphone.jpg',64,11113)
-,(57,'Iphone 11',2000,'images/iphone.jpg',66,11113)
+INSERT INTO `products` (`Product_ID`,`Name`,`price`,`Picture`,`Stock`,`Category`,`p_description`) 
+VALUES (46,'Galaxy S20',2000,'images/SamsungS20.png',55,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(47,'Galaxy S20 plus',2000,'images/samsungs20plus',68,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(48,'Galaxy S21 ultra',2500,'images/iphone.jpg',32,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(49,'Galaxy Z Flip',3000,'images/Flipz.png',29,11112)
+,(56,'Iphone X',1999,'images/iphone.jpg',64,11113)
+,(57,'Iphone 11',3000,'images/iphone11plus.png',66,11113)
 ,(58,'Iphone 11plus',2000,'images/iphone.jpg',45,11113)
 , (59,'Iphone 13 MAX',2000,'images/iphone.jpg',32,11113)
-,(72,'MateBook E',2000,'images/MateBookE.png',60,11118)
-, (73,'MateBook 14',2000,'images/iphone.jpg',25,11118)
-,(74,'MateBook 14s',2000,'images/iphone.jpg',30,11118)
-,(75,'Creator 7i',2000,'images/iphone.jpg',25,11119)
+,(72,'MateBook E',4000,'images/MateBookE.png',60,11118)
+, (73,'MateBook 14',4300,'images/iphone.jpg',25,11118)
+,(74,'MateBook 14s',5000,'images/iphone.jpg',30,11118)
+,(75,'Creator 7i',7000,'images/iphone.jpg',25,11119)
 , (76,'V14 Gen2',2000,'images/iphone.jpg',22,11119)
-,(77,'ThinkBook 15p',2000,'images/iphone.jpg',27,11119);
+,(77,'ThinkBook 15p',2999,'images/thinkpad.png',27,11119);
 INSERT INTO `cities` (`CityID`, `CityName`) VALUES ('111', 'ALRIYADH');
 -- INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('222', 'JEDDAH');
 -- INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('333', 'ALHASA');

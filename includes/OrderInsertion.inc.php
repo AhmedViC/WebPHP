@@ -46,7 +46,7 @@ error_reporting(E_ALL);
     }
 
     else{
-       header("location: ../Checkoutpage.php?error=anErrorOccured")
+       header("location: ../Checkoutpage.php?error=anErrorOccured");
         
     }
 

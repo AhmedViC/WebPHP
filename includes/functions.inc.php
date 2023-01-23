@@ -134,6 +134,13 @@ function retriveProducts($conn)
      $stmt->execute();
     
      $result = mysqli_stmt_get_result($stmt);
+     $icon='fa-solid fa-cart-shopping';
+     if(isset($_SESSION['role'])&&$_SESSION['role']=='admin')
+     {
+        $icon = 'fa-solid fa-pen-to-square';
+
+
+     }
 
      while($row = mysqli_fetch_assoc($result))
      {
@@ -149,7 +156,7 @@ function retriveProducts($conn)
              
                <h3><a href="productDetails.php?id='.$row['Product_ID'].'">'.$row['Name'].'</a></h3>
                <h4>'.$row['price'].'</h4>
-               <Button  type="button" class="open"><i class="fa-solid fa-cart-shopping"></i></Button>
+               <Button  type="button" class="open"><i class="'.$icon.'"></i></Button>
              
                <input type="hidden" class="pr_id" id="producId" value="'.$row['Product_ID'].'">
                <input type="hidden" class="pr_name" name="productName" value="'.$row['Name'].'">

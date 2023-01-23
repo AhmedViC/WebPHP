@@ -24,8 +24,8 @@ require_once('includes/functions.inc.php');
     <link
         href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap"
         rel="stylesheet">
-        <script src="Javascript/adminpopUp.js" defer></script>
-    
+        <script src="Javascript/quantitypopUp.js" defer></script>
+        <script src="Javascript/purchaseMsg.js" defer></script>
         
         
 </head>
@@ -38,11 +38,25 @@ require_once('includes/functions.inc.php');
 
 
 require_once('header.php');
-require_once('popUpAdmin.Component.php');
+require_once('popUp.Component.php');
 ?>
   
 
 
+
+    <!--------------------ADV-------------------->
+    <div class="rows">
+        <div class="col-2">
+            <h1>Check Out The Major Disscounts<br> On Our Smartphones !!</h1>
+            <p>Apple and Samsung has just realesed the best phones of year,<br> don't miss the opportunity to buy one
+                right now !
+            </p>
+            <a href="" class="btn">Check out Now &#8594;</a>
+        </div>
+        <div class="col-2">
+            <img src="SamsungApple.png" width="300px">
+        </div>
+    </div>
 
 
     <!--products GRID

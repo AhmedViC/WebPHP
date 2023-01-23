@@ -57,6 +57,10 @@ border-radius: 20px;
 
 }
 
+#p_name{
+  width: fit-content;
+}
+
 #cartB{
   margin-bottom: 5px;
 }
