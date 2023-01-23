@@ -1,6 +1,6 @@
-drop database storetest;
-create database storeTest;
-use storeTest;
+drop database store;
+create database store;
+use store;
 
 CREATE TABLE Cities (
 

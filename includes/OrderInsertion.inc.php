@@ -37,7 +37,7 @@ error_reporting(E_ALL);
         saveorderInCookie($OrderKey);
         unset($_SESSION['shoppingcart']);
 
-        // header("location: ../orderThankYou.php");
+        header("location: ../orderThankYou.php");
 
 
 

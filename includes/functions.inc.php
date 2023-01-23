@@ -335,19 +335,18 @@ function getPreviousOrders()
 
 function retriveOrderData($orderID,$conn)
 {
-   
+  
     $stmt = $conn->prepare("SELECT * from OrdersDATA,Products where D_OrderKey=?  and productID=product_ID;");
     $stmt->bind_param("s",$orderID);
     
      $stmt->execute();
     
      $result = mysqli_stmt_get_result($stmt);
-
-     while($row = mysqli_fetch_assoc($result))
+     if(mysqli_num_rows($result)>0)
      {
+ echo '  <div class="ordersContainer">
         
-         
-       echo '     
+    
        <div class="containerHeader"><H2>Order</H2></div>
         <div class="containerBody">
            
@@ -362,7 +361,13 @@ function retriveOrderData($orderID,$conn)
                        <td>
                         Price
                        </td>
-                    </thead><tbody>
+                    </thead><tbody>';
+     while($row = mysqli_fetch_assoc($result))
+     {
+        
+         
+       echo '     
+       <tr>
        <td>
           '.$row['Name'].'
           </td>
@@ -370,22 +375,26 @@ function retriveOrderData($orderID,$conn)
          '.$row['Quantity'].'
           </td>
           <td>
-          2000
+           '.$row['Quantity']*$row['price'].'
           </td>
+           <tr>
 
-   </tbody>
-</table>
-
-
-</div>
-</div>'
+'
 
                           ;
                         
 
 
 }
+echo '   </tbody>
+</table>
 
+
+</div>
+</div>
+'
+;
+     }
 }
 
 function displayOrders($customerID,$conn)
@@ -394,13 +403,11 @@ function displayOrders($customerID,$conn)
    
      for($i=1 ; $i<count($cookieArray);$i++)
     {
-        echo ' <div class="ordersContainer">
-        ';
+        
 
        retriveOrderData($cookieArray[$i],$conn);
     }
-    echo ' </div>
-        ';
+
 
   
 }

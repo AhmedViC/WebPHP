@@ -47,13 +47,12 @@ session_start();
                 <a href="#"> <span class="material-symbols-outlined">
                        
                     </span> Profile </a>
-                    <a href="includes/logout.inc.php"> <span class="material-symbols-outlined">
+                    <a href="orderspage.php">
+                    
                         
-                    </span>Orders </a>
+                   Orders </a>
 
-                <a href="includes/logout.inc.php"> <span class="material-symbols-outlined">
-                        
-                    </span>Log Out </a>
+                <a href="includes/logout.inc.php"> Log Out </a>
                   
 
 
