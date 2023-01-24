@@ -24,6 +24,49 @@ function checkEmail($conn,$email)
 
 }
 
+function saveImg()
+{
+
+
+        $filename = $_FILES["Img"]["name"];
+        echo $filename;
+    
+        $tempname = $_FILES["Img"]["tmp_name"];  
+    
+            $folder = "../images/".$filename;   
+     
+    
+ 
+    
+      
+    
+   
+    
+            if (move_uploaded_file($tempname, $folder)) {
+    
+               return 'images/'.$filename;
+    
+            }else{
+    
+                return 0;
+    
+        }
+    
+    }
+    
+function insertProductToDB($conn, $id,$name,$price,$stock,$description,$category,$img)
+{
+    $sql='INSERT INTO `store`.`products` (`Product_ID`, `Name`, `price`, `Picture`, `Stock`, `p_description`, `Category`) 
+    VALUES (?,?,?,?,?,?,?);';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('isisisi',$id,$name,$price,$img,$stock,$description,$category);
+    return $stmt->execute();
+    
+
+
+
+}
+
 function ManagerLogIn($conn, $email , $password)
 {
     echo $email;
@@ -125,6 +168,20 @@ function insertUser($conn, $fname, $lname, $email, $passw, $birthdate,$phone,  $
 
 }
 
+
+function updateProduct($conn,$id,$newname,$newstock,$newprice,$description)
+{
+    $sql="UPDATE `store`.`products` SET `Name` = ?, `price` = ?, `Stock` =?, `p_description` = ? WHERE (`Product_ID` = ?);";
+    $stmt = $conn->prepare($sql);
+    $stmt -> bind_param("ssisi",$newname,$newprice,$newstock,$description,$id);
+    $update = $stmt->execute();
+    return $update;
+
+
+
+
+}
+
 //to print product in home page
 function retriveProducts($conn)
 {
@@ -200,7 +257,13 @@ function productDetailsQuery($conn,$id)
            <label><span>Stock:</span>'.$row['Stock'].'</label>
            <label><span>Price:</span>'.$row['price'].'</label>
            <label class="p_description"><span>Details:</span>'.$row['p_description'].'</label>
-           <Button><i class="fa-solid fa-cart-plus"></i></Button>
+           <Button  id="open" type="button" class="open"><i class="fa-solid fa-cart-plus"></i></Button>
+               
+           <input type="hidden" class="pr_id" id="producId" value="'.$row['Product_ID'].'">
+           <input type="hidden" class="pr_name" name="productName" id="productName" value="'.$row['Name'].'">
+           <input type="hidden"  class="pr_price" name="productPrice"  id="pprice" value="'.$row['price'].'">
+           <input type="hidden"  class="pr_stock" name="stock" id="stock" value="'.$row['Stock'].'">
+           <input type="hidden"  name="img" id="img" value="'.$row['Picture'].'">
    
        </div>
        </div>

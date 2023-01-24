@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 /* home page styles */
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Open+Sans&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap');
 body{
     margin: 0px;
     padding: 0px;
@@ -56,11 +57,90 @@ border-radius: 20px;
   color: red;
 
 }
+.addProduct select{
+  width: 250px;
+  margin: auto auto;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 10px;
+  border-radius: 20px;
 
+}
+.addProduct{
+  text-align: center;
+  margin: 2rem;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+  
+}
+.addProduct button{
+  width: 100px;
+  margin: auto auto;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+.addProduct button:hover{
+  width: 250px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.addProduct select:focus{
+  width: 250px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.addProduct textarea{
+  width:300px;
+  height:200px;
+
+  font-size: 1.5rem;
+  margin: auto auto;
+}
+.addProduct input:focus{
+  width: 250px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.pageTitle{
+  text-align: center;
+  margin-top: 40px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.addProduct input{
+  width: 5rem;
+  border-radius: 20px;
+  font-size: 1.5rem;
+
+ 
+ margin: auto auto;
+}
+
+.imgInput{
+  font-size: 2px;
+
+
+}
+input[type="file"] {
+  font-size: 10px;
+  padding: 10px;
+  width: fit-content;
+}
 #p_name{
   width: fit-content;
 }
-
+.searchBar{
+  padding: 20px;
+  text-align: center;
+}
+.searchBar input{
+  width: fit-content;
+  height: 30px;
+}
 #cartB{
   margin-bottom: 5px;
 }

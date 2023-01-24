@@ -20,6 +20,9 @@
 <link
     href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap"
     rel="stylesheet">
+    <script src="Javascript/quantitypopUpdetails.js" defer>
+
+    </script>
 </head>
 <body>
 
@@ -29,6 +32,7 @@
 include_once('header.php');
 include_once('includes/functions.inc.php');
 include_once('includes/dbConn.inc.php');
+require_once('popUp.Component.php');
     if(isset($_GET['id']))
     {
         productDetailsQuery($conn,$_GET['id']);

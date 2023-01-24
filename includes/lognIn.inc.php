@@ -11,9 +11,7 @@ if(isset($_POST["submit"]))
 
     require_once('dbConn.inc.php');
     require_once('functions.inc.php');
-    //LogIn will return 1 if pass & username are correct
-    // will return 2 if email correct but poassword is not correct
-    //will return 3 if email and passowrd are not correct
+  
     
     $state = logIn($conn, $email , $passw);
     if(isset($_SESSION['role']))

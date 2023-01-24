@@ -28,6 +28,12 @@ require_once('includes/functions.inc.php');
         <script src="Javascript/updateMessage.js" defer></script>
 
         <script src="Javascript/searchBarFilter.js" defer></script>
+        <style>
+            .open:hover{
+                background-color: black;
+
+            }
+        </style>
         
         
 </head>
@@ -36,28 +42,53 @@ require_once('includes/functions.inc.php');
 <?php
  
 
-   
-
 
 require_once('header.php');
 require_once('popUpAdmin.Component.php');
-?>
-<div class="searchBar">
-<input type="search"  id="searchBar" autofocus>
+
+if (isset($_SESSION['role'])&&$_SESSION['role']=='admin')
+{ 
+   
+ }
+else{
+  header("location: homepage.php");
+}
   
-</div>
+
+?>
+<h2 class="pageTitle">
+add new product
+</h2>
+
+<form  method="POST" action="includes/addproduct.inc.php" enctype="multipart/form-data">
+    <div class="addProduct" >
+    <label>Product ID</label>
+        <input type="number" max="10000"  name="id">
+        <label>Product Name</label>
+        <input type="text" maxlength="40"  name="name">
+        <label>Product Category</label>
+        <select name="category">
+  <option value="11112">Mobiles & Accessories(Samsung)</option>
+  <option value="11117">Laptops & Accessories(Apple)</option>
+  <option value="11116">Mobiles(Sony)</option>
+  <option value="11118">Mobiles(Huawei)</option>
+</select>
+        <label>Price</label>
+        <input type="number" max="100000" name="price">
+        <label>Stock</label>
+        <input type="number" max="100000"  name="stock">
+        <label>Image</label>
+        <input class="imgInput" type="file"  name="Img">
+        <label>Description</label>
+        <textarea maxlength="250" name="description"></textarea>
+        <button name="add" type="submit">Submit</button>
 
 
-
-    <!--products GRID
-    each item ends with 3 divs-->
-    <div class="flexGrid">
-        <div class="productsGridContainer">
-         <?php
-    retriveProducts($conn);
-         ?>
-        </div>
     </div>
+
+
+</form>
+
     <!------------------Footer------------->
    <?php
 

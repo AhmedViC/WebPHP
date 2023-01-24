@@ -48,14 +48,14 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
   
 
 
-   
+   console.log('name',pname);
 
    const img = document.getElementById('imgP')
    const popUp = document.getElementById('popUp')
    const price= document.getElementById('price')
    const p_name= document.getElementById('p_name')
    const stock1= document.getElementById('stock')
-   const description =document.getElementById(p_description)
+   const description =document.getElementById('p_description')
   
    p_name.value=pname;
    price.value=pPrice;
@@ -67,7 +67,7 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
 
    const errorMessage=document.getElementById('err')
 
-}
+
 
 
    console.log(popUpeditButton)
@@ -85,7 +85,7 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
        const hiddenstock = document.getElementById('pr_stock')
 
      
-    
+   
    const productImg = document.getElementById('productImg')
        hiddenName.value=pname
        hiddenPrice.value=pPrice
@@ -93,11 +93,12 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
        productImg.value=Pimg.src
   
        hiddenstock.value=stock
-       console.log(hiddenstock.value)
+       console.log('hidden is',hiddenstock.hiddenId)
   
 
        console.log('price' ,hiddenPrice.value)
        console.log('hidden name',hiddenName.getAttribute("value"))
    })
    
+}
 

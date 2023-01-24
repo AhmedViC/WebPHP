@@ -1,6 +1,6 @@
 
 
-
+console.log('hi')
     const products = document.querySelectorAll('.productsContainer');
   
 

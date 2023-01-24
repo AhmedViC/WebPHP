@@ -1,11 +1,22 @@
 <?php
 
 session_start();
+
 ?>
 <div CLASS="header">
         <div>
             <img src="LogoWOW.PNG">
         </div>
+        <div>
+            <?php
+               if(isset($_SESSION['fname'])){
+
+                echo '<h2>'.$_SESSION['fname'].'</h2>';
+               }
+
+
+?>
+        </h2></div>
         <div>
             <nav>
                 <ul class="navbar">
@@ -38,19 +49,31 @@ session_start();
 
     if(isset($_SESSION['fname']))
     {
-        echo '
+        echo'
         <li>
         <div class="dropdown">
-            <button class="dropbtn">Account</button>
+            <button class="dropbtn">'.$_SESSION['fname'].'</button>
             <div class="dropdown-content">
 
-                <a href="#"> <span class="material-symbols-outlined">
-                       
-                    </span> Profile </a>
+              ';
+              if($_SESSION['role']!='admin')
+              {
+              echo '
                     <a href="orderspage.php">
                     
                         
-                   Orders </a>
+                   Orders </a>';
+              }
+              else{
+                echo '
+                <a href="addProductPage.php">
+                
+                    
+               add product </a>';
+
+
+              }
+              echo'
 
                 <a href="includes/logout.inc.php"> Log Out </a>
                   
