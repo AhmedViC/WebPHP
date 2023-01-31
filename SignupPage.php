@@ -97,23 +97,27 @@
             <input type="text" id="fname" name="fname" required>
             <span></span>
             <label>First Name</label>
+            <small></small>
         </div>
         <div class="field">
         
             <input type="text" id="lname" name="lname" required>
             <span></span>
             <label>Last Name</label>
+            <small></small>
         </div>
        <div class="field">
         
         <input type="email" id="email" name="email" >
         <span></span>
         <label>Email</label>
+        <small>ddf</small>
     </div>
         <div class="field">
             <input type="password" id="pass" name="pass" required>
             <span></span>
             <label for="pass">Password</label>
+            <small></small>
             
            
 
