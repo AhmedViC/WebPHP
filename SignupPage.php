@@ -21,6 +21,7 @@
     href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap"
     rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="javascript/SignUpFromVal.js" defer ></script>
 </head>
 <body>
 
@@ -87,7 +88,7 @@
     <div class="data">
       
        
-    <form method="post" action="includes/signUp.inc.php" autocomplete="off">
+    <form method="post" id="signUpFrom" action="includes/signUp.inc.php" autocomplete="off" novalidate>
         <div>
             <h1>Sign Up</h1>
         </div>
@@ -105,7 +106,7 @@
         </div>
        <div class="field">
         
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" >
         <span></span>
         <label>Email</label>
     </div>
@@ -158,7 +159,7 @@
 
      
         <div class="loginbutton">
-            <button type="submit" name="submit">Login</button>
+            <button type="submit" name="submit" id="submit">Login</button>
         </div>
 
        
