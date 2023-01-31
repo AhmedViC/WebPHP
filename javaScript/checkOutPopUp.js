@@ -1,6 +1,4 @@
 
-
-
     const products = document.querySelectorAll('.cartItems');
   
 

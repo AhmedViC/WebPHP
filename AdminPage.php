@@ -4,7 +4,7 @@
 <?php
 require_once('includes/dbConn.inc.php');
 require_once('includes/functions.inc.php');
-
+session_start();
 ?>
 <head>
     <meta charset="UTF-8">
@@ -40,7 +40,12 @@ require_once('includes/functions.inc.php');
 
 
 require_once('header.php');
+
+if(!isset($_SESSION['role'])){
+    header("location: homepage.php?error=unauthorizedAccess");
+}
 require_once('popUpAdmin.Component.php');
+
 ?>
 <div class="searchBar">
 <input type="search"  id="searchBar" autofocus>

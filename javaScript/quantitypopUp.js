@@ -1,12 +1,13 @@
 
 
-console.log('hi')
+
     const products = document.querySelectorAll('.productsContainer');
   
 
 
     for(var i = 0 ; i<products.length;i++)
     {
+       
        
         const id= products[i].getElementsByClassName('pr_id')[0].value;
         const price = products[i].getElementsByClassName('pr_price')[0].value;
@@ -22,6 +23,7 @@ console.log('hi')
             openpopUp(id,price,Pname,img,stock)
         })
     }
+
   
      
 

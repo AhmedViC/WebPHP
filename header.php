@@ -20,7 +20,17 @@ session_start();
         <div>
             <nav>
                 <ul class="navbar">
-                    <li><a href="HomePage.php"> Home Page </a></li>
+                    <li><a href="      <?php
+               if(isset($_SESSION['role'])&&$_SESSION['role']=='admin'){
+
+                echo 'adminpage.php';
+               }
+               else{
+                echo 'homepage.php';
+               }
+
+
+?>"> Home Page </a></li>
                     <li>
                         <div class="dropdown">
                             <button class="dropbtn">Products</button>

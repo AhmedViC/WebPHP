@@ -29,9 +29,10 @@ function saveImg()
 
 
         $filename = $_FILES["Img"]["name"];
-        echo $filename;
+
     
-        $tempname = $_FILES["Img"]["tmp_name"];  
+        $tempname = $_FILES["Img"]["tmp_name"]; 
+
     
             $folder = "../images/".$filename;   
      
@@ -377,6 +378,11 @@ function insertBill($conn,$orderKey,$purchasedate,$totalPrice,$email,$customerID
 function saveorderInCookie($orderKey)
 {
     setcookie($orderKey,$orderKey,time()+10000000,"/");
+ 
+ 
+
+    
+
    
 
 

@@ -2,6 +2,7 @@
 require_once('functions.inc.php');
 require_once('dbConn.inc.php');
 session_start();
+
     if($_SESSION['role']=='admin'&&isset($_POST['add']))
     {
         $id = $_POST['id'];
