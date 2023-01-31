@@ -24,6 +24,7 @@ require_once('includes/functions.inc.php');
     <link
         href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap"
         rel="stylesheet">
+        
         <script src="Javascript/adminpopUp.js" defer></script>
         <script src="Javascript/updateMessage.js" defer></script>
 
@@ -43,6 +44,11 @@ require_once('header.php');
 
 if(!isset($_SESSION['role'])){
     header("location: homepage.php?error=unauthorizedAccess");
+}
+else if($_SESSION['role']!='admin')
+{
+    header("location: homepage.php?error=unauthorizedAccess");
+
 }
 require_once('popUpAdmin.Component.php');
 
