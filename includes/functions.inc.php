@@ -274,6 +274,16 @@ function productDetailsQuery($conn,$id)
 
 }
 
+function removeProduct($conn,$productID)
+{
+    $sql = "DELETE FROM `store`.`products` WHERE (`Product_ID` = ?);";
+    echo $productID;
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bind_param("i",$productID);
+    echo $stmt->execute();
+
+}
 
 function insertOrder($conn,$customerID)
 {

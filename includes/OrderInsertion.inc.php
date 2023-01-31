@@ -44,6 +44,12 @@ error_reporting(E_ALL);
         
       
     }
+    else if(isset($_SESSION['fname'])&&isset($_POST['submit'])&&empty($_SESSION['shoppingcart']))
+    {
+        header("location: ../Checkoutpage.php?error=EmptyCart");
+
+    }
+
 
     else{
        header("location: ../Checkoutpage.php?error=anErrorOccured");

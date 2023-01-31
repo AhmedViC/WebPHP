@@ -4,7 +4,7 @@
 <?php
 require_once('includes/dbConn.inc.php');
 require_once('includes/functions.inc.php');
-session_start();
+
 ?>
 <head>
     <meta charset="UTF-8">

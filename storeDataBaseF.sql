@@ -19,6 +19,7 @@ phoneNumber varchar(10),
 district varchar(30),
 City_id int,
  foreign key (City_id) REFERENCES Cities(CityID)
+  ON UPDATE CASCADE ON DELETE CASCADE
 
 
 );
@@ -51,7 +52,8 @@ CREATE TABLE category (
   p_description VARCHAR(200),
   Category int ,
   
-  foreign key (Category) REFERENCES category( Category_ID),
+  foreign key (Category) REFERENCES category( Category_ID)
+   ON UPDATE CASCADE ON DELETE CASCADE,
   PRIMARY KEY (Product_ID));
   
 CREATE TABLE Orders(
@@ -66,9 +68,11 @@ CustomerID int not null,
   
 CREATE TABLE OrdersDATA(
 D_OrderKey VARCHAR(100) ,
-  foreign key (D_OrderKey) REFERENCES Orders(OrderKey),
+  foreign key (D_OrderKey) REFERENCES Orders(OrderKey)
+   ON UPDATE CASCADE ON DELETE CASCADE,
   ProductID int not null,
- foreign key (ProductID) REFERENCES PRODUCTS( Product_ID),
+ foreign key (ProductID) REFERENCES PRODUCTS( Product_ID)
+  ON UPDATE CASCADE ON DELETE CASCADE,
 Quantity int not null,
 primary key(D_OrderKey,ProductID)
   
@@ -84,6 +88,7 @@ CREATE TABLE PaymentInfo(
   ExpYear int,
   D_OrderKey VARCHAR(100) primary key ,
   foreign key (D_OrderKey) REFERENCES Orders(OrderKey)
+   ON UPDATE CASCADE ON DELETE CASCADE
  
   
   
@@ -96,7 +101,8 @@ CREATE TABLE PaymentInfo(
 CREATE TABLE BillingAddress(
     B_OrderKey VARCHAR(100) primary key ,
 
-  foreign key (B_OrderKey) REFERENCES Orders(OrderKey),
+  foreign key (B_OrderKey) REFERENCES Orders(OrderKey)
+   ON UPDATE CASCADE ON DELETE CASCADE,
    FullName VARCHAR(50),
   Eamil VARCHAR(50),
   b_Address VARCHAR(20),
@@ -110,10 +116,12 @@ Total_price int not null,
 date_purchase date,
 CustomerEmail varchar(30),
 CustomerID int not null,
- foreign key (CustomerID) REFERENCES customer(C_id),
+ foreign key (CustomerID) REFERENCES customer(C_id)
+  ON UPDATE CASCADE ON DELETE CASCADE,
  
   D_OrderKey VARCHAR(100)  ,
   foreign key (D_OrderKey) REFERENCES Orders(OrderKey)
+   ON UPDATE CASCADE ON DELETE CASCADE
  
   
   
@@ -152,17 +160,28 @@ comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chips
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
 ,(48,'Galaxy S21 ultra',2500,'images/iphone.jpg',32,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
-,(49,'Galaxy Z Flip',3000,'images/Flipz.png',29,11112)
-,(56,'Iphone X',1999,'images/iphone.jpg',64,11113)
-,(57,'Iphone 11',3000,'images/iphone11plus.png',66,11113)
-,(58,'Iphone 11plus',2000,'images/iphone.jpg',45,11113)
-, (59,'Iphone 13 MAX',2000,'images/iphone.jpg',32,11113)
-,(72,'MateBook E',4000,'images/MateBookE.png',60,11118)
-, (73,'MateBook 14',4300,'images/iphone.jpg',25,11118)
-,(74,'MateBook 14s',5000,'images/iphone.jpg',30,11118)
-,(75,'Creator 7i',7000,'images/iphone.jpg',25,11119)
-, (76,'V14 Gen2',2000,'images/iphone.jpg',22,11119)
-,(77,'ThinkBook 15p',2999,'images/thinkpad.png',27,11119);
+,(49,'Galaxy Z Flip',3000,'images/Flipz.png',29,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(56,'Iphone X',1999,'images/iphone.jpg',64,11113,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(57,'Iphone 11',3000,'images/iphone11plus.png',66,11113,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(58,'Iphone 11plus',2000,'images/iphone.jpg',45,11113,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+, (59,'Iphone 13 MAX',2000,'images/iphone.jpg',32,11113,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(72,'MateBook E',4000,'images/MateBookE.png',60,11118,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+, (73,'MateBook 14',4300,'images/iphone.jpg',25,11118,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(74,'MateBook 14s',5000,'images/iphone.jpg',30,11118,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(75,'Creator 7i',7000,'images/iphone.jpg',25,11119,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+, (76,'V14 Gen2',2000,'images/iphone.jpg',22,11119,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
+,(77,'ThinkBook 15p',2999,'images/thinkpad.png',27,11119,'Samsung Galaxy S20, the smallest of the S20 family, 
+comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage');
 INSERT INTO `cities` (`CityID`, `CityName`) VALUES ('111', 'ALRIYADH');
 -- INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('222', 'JEDDAH');
 -- INSERT INTO `store`.`cities` (`CityID`, `CityName`) VALUES ('333', 'ALHASA');

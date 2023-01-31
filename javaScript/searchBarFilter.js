@@ -30,7 +30,7 @@ for(var i = 0 ; i<products1.length;i++)
     }
 
     else{
-        products1[i].style.display="flex";
+        products1[i].style.display="";
 
     }
 }

@@ -19,8 +19,11 @@
 
 
 
-  <button type="submit" id="editButton">
+  <button title="save changes" type="submit" name="edit" id="editButton">
   <i class="fa-solid fa-floppy-disk"></i>
+  
+  <button title="remove product" type="submit"id="delete" name="delete">
+  <i class="fa-solid fa-trash"></i>
   </button>
  <span class="stockError" hidden id="err"> That excceeds the available stock!</span>
   <Button  id="close" type="button" class="open" >

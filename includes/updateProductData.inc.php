@@ -5,6 +5,8 @@ session_start();
 
     if(isset($_SESSION['role'])&&$_SESSION['role']=='admin')
     {
+      if(isset($_POST['edit']))
+    {
         $productID=$_POST['producId'];
         $price=$_POST['productNewPrice'];
         $stock=$_POST['productNewStock'];
@@ -19,6 +21,17 @@ session_start();
         }
         
     }
+    else if(isset($_POST['delete']))
+    {
+      echo isset($_POST['producId']);
+      $productID=$_POST['producId'];
+      echo "id".$productID;
+      removeProduct($conn,$productID);
+      header("location: ../AdminPage.php?m=deletedSuccessfully");
+  
+
+    }
+  }
     else{
       header("location: ../homepage.php?error=notAllowed");
     }

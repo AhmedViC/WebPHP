@@ -14,6 +14,7 @@
        const Pname =  products[i].getElementsByClassName('pr_name')[0].value
         const btn = products[i].getElementsByTagName('button')[0];
         const img = products[i].getElementsByTagName('img')[0];
+
         
         const stock = products[i].getElementsByClassName('pr_stock')[0].value;
 
@@ -21,6 +22,7 @@
         {
             openpopUp(id,price,Pname,img,stock)
         })
+    
     }
     const popUpeditButton= document.getElementById('editButton')
      
@@ -100,5 +102,37 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
        console.log('hidden name',hiddenName.getAttribute("value"))
    })
    
+
+
+const btnDelete = document.getElementById('delete')
+
+btnDelete.addEventListener('click',
+function()
+{
+    //to assign values to hidden input
+
+
+    const hiddenName= document.getElementById('productNames')
+    const hiddenPrice= document.getElementById('productPrice')
+    const hiddenId= document.getElementById('productId')
+    const hiddenQuantity= document.getElementById('productQ') 
+    const hiddenstock = document.getElementById('pr_stock')
+
+  
+
+const productImg = document.getElementById('productImg')
+    hiddenName.value=pname
+    hiddenPrice.value=pPrice
+    hiddenId.value=productId
+    productImg.value=Pimg.src
+
+    hiddenstock.value=stock
+    console.log('hidden is',hiddenstock.hiddenId)
+
+
+    console.log('price' ,hiddenPrice.value)
+    console.log('hidden name',hiddenName.getAttribute("value"))
+})
+
 }
 
