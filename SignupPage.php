@@ -125,7 +125,7 @@
         <div class="field">
             <label>Birth Date</label>
             <input type="date" name="date" required style="text-align: center;">
-           
+            <small></small>
             
            
 
@@ -135,7 +135,7 @@
            
             <input type="tel" id="phone" name="phone" required>
             <label>Phone Number</label>
-            
+            <small></small>
            
 
         </div>

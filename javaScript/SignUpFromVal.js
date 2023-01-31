@@ -9,6 +9,14 @@ const validateEmail = (email) => {
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
   };
+  const validatePhone = (phone) => {
+    return String(phone)
+     
+      .match(
+        /^05\d{8}$/
+      );
+  };
+
 
 
 
@@ -48,8 +56,28 @@ form.addEventListener('submit',function(event)
    if(form.pass.value.length<5)
    {
     event.preventDefault();
+    setErrorMessage(form.pass,'weak password!')
    console.log('weak password')
 
+   }
+   else{
+    removeError(form.pass)
+
+   }
+
+   if(validatePhone(form.phone.value)==null)
+
+
+   
+   {   event.preventDefault();
+    setErrorMessage(form.phone,'incorrect number!')
+    console.log('false number')
+
+
+   }
+   else{
+    console.log('correct number')
+    removeError(form.phone)
    }
    
   
