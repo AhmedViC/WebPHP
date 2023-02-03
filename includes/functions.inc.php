@@ -55,13 +55,17 @@ function saveImg()
     
     }
     
-function insertProductToDB($conn, $id,$name,$price,$stock,$description,$category,$img)
+function insertProductToDB($conn,$name,$price,$stock,$description,$category,$img)
 {
+    $id=rand();
     $sql='INSERT INTO `store`.`products` (`Product_ID`, `Name`, `price`, `Picture`, `Stock`, `p_description`, `Category`) 
     VALUES (?,?,?,?,?,?,?);';
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('isisisi',$id,$name,$price,$img,$stock,$description,$category);
-    return $stmt->execute();
+    if($stmt->execute())
+    {
+        return $id;
+    };
     
 
 
@@ -320,14 +324,101 @@ function insertAnOrderItem($conn, $orderKey, $productID, $quantity)
 
 
 }
+function addItemsToCookieOrder($sessionCart,$orderKey)
+{
+    $index = 0;
+    if(!empty($_COOKIE['orrders']))
+  
+    {
+     
+        $index = count(json_decode($_COOKIE['orrders'],true));
+    
+        //   var_dump(json_decode($_COOKIE['test'],true));
+    
+        $arr =  array($index=>$sessionCart);
+        
+        $ordersArray = json_decode($_COOKIE['orrders'],true);
+        $newArray =array_merge($ordersArray,$arr);
+   
+
+
+        setcookie("orrders",json_encode($newArray),time()+1000000,"/");
+        unset($_SESSION['shoppingcart']);
+        header("location: ../Homepage.php");
+
+    }
+    else{
+
+    $arr = 
+    array(0=>$sessionCart);
+    setcookie("orrders",json_encode($arr),time()+1000000,"/");
+
+    }
+           
+    
+       
+       
+        }
+    
+    
+
+function printCookies()
+{
+   
+   
+   print_r($_COOKIE['test']);
+   echo 'array:'.'<br>';
+   print_r(json_decode($_COOKIE['test'],true));
+
+}
+function checkQuantity($productID, $conn,$quantity)
+{
+
+
+     
+    $stmt = $conn->prepare("select * from products where Product_ID=?
+    ");
+    $stmt->bind_param("i",$productID);
+     $stmt->execute();
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
+    print_r($row);
+    echo '<br>';
+    echo $quantity;
+
+    if($row['Stock']<$quantity)
+    {
+        return 0;
+    }
+   
+        return 1;
+    
+
+
+
+
+}
 
 function insertAllItems($sessionCart,$conn,$orderKey)
 {
+   
 
     foreach( $sessionCart as $item)
     {
         $productID = $item["p_id"];
         $productQuantity = $item["quantity"];
+        
+       
+        if(checkQuantity($productID,$conn,$productQuantity)==0)
+        {
+
+           
+            header("location: ../checkoutpage.php?error=invalidquantity");
+         
+
+
+        }
+      
         
      insertAnOrderItem($conn,$orderKey,$productID,$productQuantity);
     
@@ -336,7 +427,7 @@ function insertAllItems($sessionCart,$conn,$orderKey)
 }
 function insertPaymentDetails($conn, $orderKey, $nameOnCard,$creditNumber,$expMonth,$cvv,$expYear)
 {
-    echo 'hhi';
+    
     $stmt = $conn->prepare("INSERT INTO `paymentinfo` (`Nameoncard`, `CreditCardNum`, `ExpMonth`, `CVV`, `ExpYear`, `D_OrderKey`) VALUES (?,?,?,?,?,?);
     ");
     $stmt->bind_param("ssisis",$nameOnCard,$creditNumber,$expMonth,$cvv,$expMonth,$orderKey);
@@ -380,52 +471,85 @@ function insertBill($conn,$orderKey,$purchasedate,$totalPrice,$email,$customerID
 
 
 }
-/*
-@param order key
 
-*/
-
-function saveorderInCookie($orderKey)
-{
-    setcookie($orderKey,$orderKey,time()+10000000,"/");
- 
- 
-
-    
-
-   
-
-
-}
 
 
 function deleteAllCookies()
 {
-    foreach ( $_COOKIE as $key => $value )
+    echo 'delete'
+;    $past = time() - 3600;
+   
+        setcookie( '$test','', time()-3600 );
+    }
 {
   
    
     
 }
 
-}
-/*
 
-@return copy orders saved in cookies to an array and return it
-*/
-function getPreviousOrders()
+
+function cookiesOrdersData()
 {
-   
-    $counter=0;
-    for(reset($_COOKIE);$element = key($_COOKIE);next($_COOKIE))
+    if(empty($_COOKIE['orrders']))
     {
-        
-        $previousOrders[$counter]=$_COOKIE[$element];
-        $counter++;
-    
+        return;
     }
+    $arr = json_decode($_COOKIE['orrders'],true);
+$counter = 0;
+
+
+foreach($arr as $orders)
+
+{
+   echo' <div class="ordersContainer">
+        
+    
+       <div class="containerHeader"><H2>Order</H2></div>
+        <div class="containerBody">
+           
+                <table border="1">
+                    <thead>
+                       <td>
+                        Name
+                       </td>
+                       <td>
+                       Quantity
+                       </td>
+                       <td>
+                        Price
+                       </td>
+                    </thead><tbody>  ';
+    foreach($orders as $items)
+    {
+          
+       echo '     
+       <tr>
+       <td>
+          '.$items['name'].'
+          </td>
+          <td>
+         '.$items['quantity'].'
+          </td>
+          <td>
+           '.$items['tPrice'].'
+          </td>
+           <tr>
+
+';                
+
+
+}
+
+
+echo '   </tbody>
+</table>
+</div>
+</div>
+    ';
    
-    return  $previousOrders;
+    
+}
 }
 
 function retriveOrderData($orderID,$conn)
@@ -490,21 +614,6 @@ echo '   </tbody>
 '
 ;
      }
-}
-
-function displayOrders($customerID,$conn)
-{
-    $cookieArray = getPreviousOrders();
-   
-     for($i=1 ; $i<count($cookieArray);$i++)
-    {
-        
-
-       retriveOrderData($cookieArray[$i],$conn);
-    }
-
-
-  
 }
 
 

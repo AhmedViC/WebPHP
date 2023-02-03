@@ -24,7 +24,6 @@ error_reporting(E_ALL);
         $zip = $_POST['zip'];
         
         
-        echo $customerID.'<br>';
 
         $OrderKey = insertOrder($conn,$customerID);
    
@@ -33,26 +32,28 @@ error_reporting(E_ALL);
         insertPaymentDetails($conn,$OrderKey,$nameOncard,$cardnum,$expMonth,$cvv,$expYear);
         insertBillingDetails($conn,$OrderKey,$fullname,$email,$address,$city,$zip);
         insertBill($conn,$OrderKey,$purchaseDate,$totalPrice,$email,$customerID);
-        echo 'done!!';
-        saveorderInCookie($OrderKey);
-        unset($_SESSION['shoppingcart']);
-
-        header("location: ../orderThankYou.php");
-
-
-
+ 
         
+
+       addItemsToCookieOrder($_SESSION['shoppingcart'],$OrderKey);
+    
+     
+       unset($_SESSION['shoppingcart']);
+       
+       header("location: ../orderThankYou.php");
+
       
     }
     else if(isset($_SESSION['fname'])&&isset($_POST['submit'])&&empty($_SESSION['shoppingcart']))
     {
-        header("location: ../Checkoutpage.php?error=EmptyCart");
+        header("location: ../checkoutpage.php?error=emptycart");
+
 
     }
 
 
     else{
-       header("location: ../Checkoutpage.php?error=anErrorOccured");
+      
         
     }
 

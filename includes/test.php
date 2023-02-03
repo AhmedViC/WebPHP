@@ -1,4 +1,7 @@
 <?php
-echo password_hash('aa',PASSWORD_DEFAULT);
+require_once('functions.inc.php');
+deleteAllCookies();
+printCookies();
+
 
 ?>

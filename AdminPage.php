@@ -42,14 +42,11 @@ require_once('includes/functions.inc.php');
 
 require_once('header.php');
 
-if(!isset($_SESSION['role'])){
+if(!isset($_SESSION['role']) || $_SESSION['role']!='admin'){
     header("location: homepage.php?error=unauthorizedAccess");
 }
-else if($_SESSION['role']!='admin')
-{
-    header("location: homepage.php?error=unauthorizedAccess");
 
-}
+
 require_once('popUpAdmin.Component.php');
 
 ?>

@@ -30,8 +30,7 @@
         header("location: homepage.php?error=notAllowed");
 
     }
-    echo $_SESSION['userID'];
-    echo $_COOKIE[2];
+
 
 
 

@@ -19,7 +19,7 @@
         console.log(stock)
         btn.addEventListener('click',function()
         {
-            openpopUp(id,price,Pname,img,stock)
+            openpopUp(id,price,Pname,img,stock,quanity)
         })
     }
   
@@ -39,7 +39,7 @@ function closepopUp()
        console.log('hi')
 }
 
-function openpopUp(productId, pPrice,pname,Pimg,stock)
+function openpopUp(productId, pPrice,pname,Pimg,stock,quanity)
 {
 
   
@@ -58,6 +58,7 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
 
    popUp.style.display="flex"
    const quantityInput= document.getElementById('inputQ')
+   quantityInput.value=quanity
    const popUpButton= document.getElementById('cartB')
    const errorMessage=document.getElementById('err')
 

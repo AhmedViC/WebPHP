@@ -63,8 +63,7 @@ add new product
 
 <form  method="POST" action="includes/addproduct.inc.php" enctype="multipart/form-data">
     <div class="addProduct" >
-    <label>Product ID</label>
-        <input type="number" max="10000"  name="id">
+
         <label>Product Name</label>
         <input type="text" maxlength="40"  name="name">
         <label>Product Category</label>

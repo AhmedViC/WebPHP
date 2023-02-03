@@ -32,13 +32,17 @@ require_once('includes/functions.inc.php');
 
 <body>
 <?php
- 
+    
 
    
 
 
 require_once('header.php');
 require_once('popUp.Component.php');
+
+
+
+
 ?>
   
 

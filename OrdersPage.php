@@ -36,7 +36,7 @@ require_once('header.php');
     require_once('includes/functions.inc.php');
     require_once('includes/dbConn.inc.php');
     
-    displayOrders($_SESSION['userID'],$conn);
+    cookiesOrdersData();
 ?>
 
     </div>
