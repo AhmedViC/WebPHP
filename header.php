@@ -6,7 +6,7 @@ ini_set('display_errors', TRUE);
 ?>
 <div CLASS="header">
         <div>
-            <img src="LogoWOW.PNG">
+            <img title="logo" src="LogoWOW.PNG">
         </div>
         <div>
             <?php
@@ -67,14 +67,14 @@ ini_set('display_errors', TRUE);
               if($_SESSION['role']!='admin')
               {
               echo '
-                    <a href="orderspage.php">
+                    <a title="display orders" href="orderspage.php">
                     
                         
                    Orders </a>';
               }
               else{
                 echo '
-                <a href="addProductPage.php">
+                <a title="add products" href="addProductPage.php">
                 
                     
                add product </a>';
@@ -83,7 +83,7 @@ ini_set('display_errors', TRUE);
               }
               echo'
 
-                <a href="includes/logout.inc.php"> Log Out </a>
+                <a title="log out" href="includes/logout.inc.php"> Log Out </a>
                   
 
 

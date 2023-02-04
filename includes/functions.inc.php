@@ -490,13 +490,6 @@ function deleteAllCookies()
    
     
 }
-function query($conn)
-{
-    $sql= "select * from products, category where Category_ID=product_id and Category_Name=?;"
-    // $stmt = $conn
-
-
-}
 
 
 function cookiesOrdersData()

@@ -49,11 +49,11 @@ require_once('popUp.Component.php');
  <div class="popUpHelp" id="popUpHelp" style="display:none">
     <div class="windowHeader"><h2>Help</h2></div>
     <div>
-        <input type="text" placeholder="how can we help You?">
+        <input title="help" type="text" placeholder="how can we help You?">
         
     </div>
     <div>
-        <button id="sendButton">send</button>
+        <button id="sendButton" title="help">send</button>
         
     </div>
 
