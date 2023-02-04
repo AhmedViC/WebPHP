@@ -243,8 +243,24 @@ require_once('popUp.Component.php');
       <p>Total <span class="price" style="color:black"><b><?php 
       printTotalprice();?></b></span></p>
     </div>
+    <div><h3><?php
+    if(isset($_GET['error']))
+    {
+      if($_GET['error']=='invalidQuantity')
+      {
+        echo 'out of stock'.$_GET['productID'].'';
+
+
+      }
+
+    }
+    
+    
+    ?></h3></div>
   </div>
+
 </div>
+
 
 </body>
 </html>

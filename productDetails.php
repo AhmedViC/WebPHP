@@ -20,9 +20,8 @@
 <link
     href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap"
     rel="stylesheet">
-    <script src="Javascript/quantitypopUpdetails.js" defer>
-
-    </script>
+    <script src="Javascript/quantitypopUpdetails.js" defer></script>
+     <script src="Javascript/helpWindow.js" defer></script>
 </head>
 <body>
 
@@ -42,6 +41,24 @@ require_once('popUp.Component.php');
 
 ?>
 
+<div class="helpWindow">
+<i id="Helpicons" class="fa-regular fa-circle-question"></i>
+</div>
+
+
+ <div class="popUpHelp" id="popUpHelp" style="display:none">
+    <div class="windowHeader"><h2>Help</h2></div>
+    <div>
+        <input type="text" placeholder="how can we help You?">
+        
+    </div>
+    <div>
+        <button id="sendButton">send</button>
+        
+    </div>
+
+
+ </div>
 
 
  <!------------------Footer------------->

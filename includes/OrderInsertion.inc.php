@@ -22,10 +22,19 @@ error_reporting(E_ALL);
         $totalPrice=getTotalPrice();
         $customerID=$_SESSION['userID'];
         $zip = $_POST['zip'];
+
+        $returnedValue = checkQuantity($_SESSION['shoppingcart'],$conn);
         
-        
+        if($returnedValue!=0){
+            
+            header("location: ../checkoutpage.php?error=invalidQuantity&productID=$returnedValue");
+            exit();
+
+        }
+
 
         $OrderKey = insertOrder($conn,$customerID);
+        
    
  
         insertAllItems($_SESSION['shoppingcart'],$conn,$OrderKey);

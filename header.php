@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
 ?>
 <div CLASS="header">
         <div>
@@ -9,10 +10,7 @@ session_start();
         </div>
         <div>
             <?php
-               if(isset($_SESSION['fname'])){
-
-                echo '<h2>'.$_SESSION['fname'].'</h2>';
-               }
+            
 
 
 ?>
@@ -92,14 +90,24 @@ session_start();
             </div>
         </div>
     </li>';
+    if($_SESSION['role']=='customer')
+    {
     echo ' <li><a href="ContactUs.php"> Contact Us </a></li>';
-        echo '<li><a href="CheckOutpage.php"><i class="fa-solid fa-cart-shopping"></i></a></li>';
+        echo '<li><a href="CheckOutpage.php"><i class="fa-solid fa-cart-shopping"></i></a>';
+        if(isset($_SESSION['shoppingcart'])){
+            echo '<li>'.count($_SESSION['shoppingcart']).'</li></a>';
+
+        }
+    
+
     }
+}
     else{
         echo '<li><a href="loginpage.php"> Login/Register </a></li>';
         echo ' <li><a href="ContactUs.php"> Contact Us </a></li>';
 
     }
+
 ?>
  
                 

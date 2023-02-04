@@ -76,7 +76,7 @@ function displayCartItems()
     <i class="fa-solid fa-pen-to-square"></i></button>
     </span><span class="editButton"><button name="delete" type="submit"><i class="fa-solid fa-xmark"></i></button></span><span class="price">
     '.$p_id['tPrice'].'</span></p>
-    <input type="hidden" class="pr_id"  id="producId" value="'.$p_id['p_id'].'">
+    <input type="hidden" class="pr_id"  name="producId" id="producId" value="'.$p_id['p_id'].'">
     <input type="hidden" class="pr_name" value="'.$p_id['name'].'">
     <input type="hidden"  class="pr_price"  value="'.$p_id['price'].'">
     <input type="hidden"  class="pr_stock"  value="'.$p_id['stock'].'">
@@ -125,7 +125,9 @@ function printTotalItems()
 
 function deleteCartItem($productID)
 {
+
     unset($_SESSION['shoppingcart'][$productID]);
+   
 
 }
 

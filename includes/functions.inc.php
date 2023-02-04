@@ -217,7 +217,7 @@ function retriveProducts($conn)
                <img src="'.$row['Picture'].'">
              
                <h3><a href="productDetails.php?id='.$row['Product_ID'].'">'.$row['Name'].'</a></h3>
-               <h4>'.$row['price'].'</h4>
+               <h4>Price: '.$row['price'].'</h4>
                <Button  type="button" class="open"><i class="'.$icon.'"></i></Button>
              
                <input type="hidden" class="pr_id" id="producId" value="'.$row['Product_ID'].'">
@@ -371,9 +371,13 @@ function printCookies()
    print_r(json_decode($_COOKIE['test'],true));
 
 }
-function checkQuantity($productID, $conn,$quantity)
+function checkQuantity($sessionCart, $conn)
 {
-
+    foreach( $sessionCart as $item)
+    {
+        $productID = $item["p_id"];
+        $productQuantity = $item["quantity"];
+    
 
      
     $stmt = $conn->prepare("select * from products where Product_ID=?
@@ -382,22 +386,24 @@ function checkQuantity($productID, $conn,$quantity)
      $stmt->execute();
     $result = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_assoc($result);
-    print_r($row);
-    echo '<br>';
-    echo $quantity;
-
-    if($row['Stock']<$quantity)
-    {
-        return 0;
-    }
    
-        return 1;
+
+    if($row['Stock']< $productQuantity)
+    { 
+        return $productID;
+      
+    }
+}
+return 0;
+
+}
+    
     
 
 
 
 
-}
+
 
 function insertAllItems($sessionCart,$conn,$orderKey)
 {
@@ -409,15 +415,13 @@ function insertAllItems($sessionCart,$conn,$orderKey)
         $productQuantity = $item["quantity"];
         
        
-        if(checkQuantity($productID,$conn,$productQuantity)==0)
-        {
+      
+    
+          
 
-           
-            header("location: ../checkoutpage.php?error=invalidquantity");
-         
+        
 
-
-        }
+        
       
         
      insertAnOrderItem($conn,$orderKey,$productID,$productQuantity);
@@ -486,7 +490,13 @@ function deleteAllCookies()
    
     
 }
+function query($conn)
+{
+    $sql= "select * from products, category where Category_ID=product_id and Category_Name=?;"
+    // $stmt = $conn
 
+
+}
 
 
 function cookiesOrdersData()

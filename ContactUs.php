@@ -56,6 +56,11 @@ include_once('header.php');
 </div>
 </div>
 </div>
+
+<div class="map">
+<iframe  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14295.800354234589!2d50.1925873!3d26.3928001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7b2db98f2941c78c!2z2KzYp9mF2LnYqSDYp9mE2KXZhdin2YUg2LnYqNiv2KfZhNix2K3ZhdmGINio2YYg2YHZiti12YQ!5e0!3m2!1sar!2ssa!4v1675511321706!5m2!1sar!2ssa" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+</div>
 </section>
 
 
@@ -113,6 +118,7 @@ include_once('header.php');
             </div>
         </div>
     </div>
+    
 </body>
 
 
