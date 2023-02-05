@@ -163,7 +163,7 @@
 
      
         <div class="loginbutton">
-            <button type="submit" name="submit" id="submit">Login</button>
+            <button type="submit" name="submit" id="submit">Sign Up</button>
         </div>
 
        

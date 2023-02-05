@@ -37,6 +37,11 @@ function closepopUp()
     console.log(document.getElementById('popUp'))
        popUp.style.display="none"
        console.log(popUp.style.display)
+   
+    const popUpButton= document.getElementById('cartB')
+    popUpButton.disabled=false;
+    const errorMessage=document.getElementById('err')
+    errorMessage.style.display="none"
     
        console.log('hi')
 }
