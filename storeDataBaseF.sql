@@ -46,7 +46,7 @@ CREATE TABLE category (
   CREATE TABLE products (
   Product_ID INT NOT NULL,
   Name VARCHAR(45) NOT NULL,
-  price int,
+  price DOUBLE,
   Picture VARCHAR(45),
   Stock INT NOT NULL,
   p_description VARCHAR(200),
