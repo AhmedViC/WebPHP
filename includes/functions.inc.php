@@ -23,6 +23,17 @@ function checkEmail($conn,$email)
 
 
 }
+function displayInvalidQuantity($conn, $productID)
+{
+    $sql = 'Select Name from products where Product_ID=?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $productID);
+    $stmt->execute();
+
+    $row = mysqli_stmt_get_result($stmt);
+    $result = mysqli_fetch_assoc($row);
+    echo 'out of stock ' . $result["Name"] . '';
+}
 
 function saveImg()
 {
@@ -134,23 +145,6 @@ function logIn($conn, $email , $password)
 else{
     ManagerLogIn($conn,$email,$password);
 }
-
-
-
-
-   
-
-
-
-
-
-//if all conditions failed
-
-
-        
-
-
- 
 
 
 }
@@ -554,73 +548,3 @@ echo '   </tbody>
     
 }
 }
-
-function retriveOrderData($orderID,$conn)
-{
-  
-    $stmt = $conn->prepare("SELECT * from OrdersDATA,Products where D_OrderKey=?  and productID=product_ID;");
-    $stmt->bind_param("s",$orderID);
-    
-     $stmt->execute();
-    
-     $result = mysqli_stmt_get_result($stmt);
-     if(mysqli_num_rows($result)>0)
-     {
- echo '  <div class="ordersContainer">
-        
-    
-       <div class="containerHeader"><H2>Order</H2></div>
-        <div class="containerBody">
-           
-                <table border="1">
-                    <thead>
-                       <td>
-                        Name
-                       </td>
-                       <td>
-                       Quantity
-                       </td>
-                       <td>
-                        Price
-                       </td>
-                    </thead><tbody>';
-     while($row = mysqli_fetch_assoc($result))
-     {
-        
-         
-       echo '     
-       <tr>
-       <td>
-          '.$row['Name'].'
-          </td>
-          <td>
-         '.$row['Quantity'].'
-          </td>
-          <td>
-           '.$row['Quantity']*$row['price'].'
-          </td>
-           <tr>
-
-'
-
-                          ;
-                        
-
-
-}
-echo '   </tbody>
-</table>
-
-
-</div>
-</div>
-'
-;
-     }
-}
-
-
-
-
-
-?>

@@ -13,7 +13,7 @@ if(isset($_POST["submit"]))
     require_once('functions.inc.php');
   
     
-    $state = logIn($conn, $email , $passw);
+    logIn($conn, $email , $passw);
     if(isset($_SESSION['role']))
     {
         if($_SESSION['role']=='customer')

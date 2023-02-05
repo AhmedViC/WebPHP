@@ -246,13 +246,9 @@ require_once('popUp.Component.php');
     <div><h3><?php
     if(isset($_GET['error']))
     {
-      if($_GET['error']=='invalidQuantity')
-      {
-        echo 'out of stock'.$_GET['productID'].'';
-
-
+      if ($_GET['error'] == 'invalidQuantity') {
+        displayInvalidQuantity($conn, $_GET['productID']);
       }
-
     }
     
     

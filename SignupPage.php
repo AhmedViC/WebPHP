@@ -111,7 +111,7 @@
         <input type="email" id="email" name="email" >
         <span></span>
         <label>Email</label>
-        <small>ddf</small>
+        <small></small>
     </div>
         <div class="field">
             <input type="password" id="pass" name="pass" required>

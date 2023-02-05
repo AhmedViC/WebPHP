@@ -61,6 +61,7 @@ ini_set('display_errors', TRUE);
         <li>
         <div class="dropdown">
             <button class="dropbtn">'.$_SESSION['fname'].'</button>
+        
             <div class="dropdown-content">
 
               ';
@@ -95,7 +96,7 @@ ini_set('display_errors', TRUE);
     echo ' <li><a href="ContactUs.php"> Contact Us </a></li>';
         echo '<li><a href="CheckOutpage.php"><i class="fa-solid fa-cart-shopping"></i></a>';
         if(isset($_SESSION['shoppingcart'])){
-            echo '<li>'.count($_SESSION['shoppingcart']).'</li></a>';
+            echo '<li><a href="">'.count($_SESSION['shoppingcart']).'</a></li>';
 
         }
     
