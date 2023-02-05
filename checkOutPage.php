@@ -156,7 +156,7 @@ require_once('popUp.Component.php');
             <h3>Billing Address</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
             <input type="text" id="fname" name="firstname" placeholder="Mohammed Hammad">
-            <small>aa</small>
+            <small></small>
             </div>
             <div>
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
