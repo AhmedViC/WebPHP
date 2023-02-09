@@ -35,9 +35,9 @@ closebutton.addEventListener('click',function()
 function closepopUp()
 {
 
-    const popUp = document.getElementById('popUp');
+    const popUp = document.getElementById('AdminpopUp');
 
-    console.log(document.getElementById('popUp'))
+    console.log(document.getElementById('AdminpopUp'))
        popUp.style.display="none"
        console.log(popUp.style.display)
     
@@ -53,7 +53,7 @@ function openpopUp(productId, pPrice,pname,Pimg,stock)
    console.log('name',pname);
 
    const img = document.getElementById('imgP')
-   const popUp = document.getElementById('popUp')
+   const popUp = document.getElementById('AdminpopUp')
    const price= document.getElementById('price')
    const p_name= document.getElementById('p_name')
    const stock1= document.getElementById('stock')

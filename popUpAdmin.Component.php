@@ -1,5 +1,5 @@
 <form action="includes/updateProductData.inc.php" method="post">
-<div style="display: none;" class="popUp" id="popUp">
+<div style="display: none;" class="popUp" id="AdminpopUp">
 <div class="popUpHeader">
    <H1>Edit</H1>
 </div>
@@ -25,7 +25,7 @@
   <button title="remove product" type="submit"id="delete" name="delete">
   <i class="fa-solid fa-trash"></i>
   </button>
- <span class="stockError" hidden id="err"> That excceeds the available stock!</span>
+
   <Button  id="close" type="button" class="open" >
     close
   </button>

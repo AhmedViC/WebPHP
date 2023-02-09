@@ -70,7 +70,7 @@ function displayCartItems()
    
     
     echo '<form action="includes/deleteCartItem.inc.php" method="post"><div class="cartItems">
-    <p><a href="#">'
+    <p><a href="productDetails.php?id='.$p_id['p_id'].'">'
     .$p_id['name'].
     '</a><span class="qData">'.$p_id['quantity'].'</span><span class="editButton"><button title="modify" type="button">
     <i class="fa-solid fa-pen-to-square"></i></button>
@@ -113,7 +113,7 @@ function printTotalItems()
         
     
     }
-    echo $totalquantity; 
+     return $totalquantity; 
 }
     else{
         echo 

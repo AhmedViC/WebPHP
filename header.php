@@ -3,6 +3,7 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
+require_once('includes/shoppingcart.fun.inc.php');
 ?>
 <div CLASS="header">
         <div>
@@ -96,7 +97,7 @@ ini_set('display_errors', TRUE);
     echo ' <li><a href="ContactUs.php"> Contact Us </a></li>';
         echo '<li><a href="CheckOutpage.php"><i class="fa-solid fa-cart-shopping"></i></a>';
         if(isset($_SESSION['shoppingcart'])){
-            echo '<li><a href="">'.count($_SESSION['shoppingcart']).'</a></li>';
+            echo '<li><a href="">'.printTotalItems().'</a></li>';
 
         }
     

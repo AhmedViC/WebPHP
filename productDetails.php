@@ -31,7 +31,9 @@
 include_once('header.php');
 include_once('includes/functions.inc.php');
 include_once('includes/dbConn.inc.php');
+require_once('popUpAdminDetails.Component.php');
 require_once('popUp.Component.php');
+
     if(isset($_GET['id']))
     {
         productDetailsQuery($conn,$_GET['id']);

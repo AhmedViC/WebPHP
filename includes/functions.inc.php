@@ -170,16 +170,18 @@ function insertUser($conn, $fname, $lname, $email, $passw, $birthdate,$phone,  $
 
 function updateProduct($conn,$id,$newname,$newstock,$newprice,$description)
 {
+
     $sql="UPDATE `store`.`products` SET `Name` = ?, `price` = ?, `Stock` =?, `p_description` = ? WHERE (`Product_ID` = ?);";
     $stmt = $conn->prepare($sql);
     $stmt -> bind_param("ssisi",$newname,$newprice,$newstock,$description,$id);
-    $update = $stmt->execute();
-    return $update;
+ return $stmt->execute();
 
 
 
 
 }
+
+
 
 //to print product in home page
 function retriveProducts($conn)
@@ -243,6 +245,14 @@ function productDetailsQuery($conn,$id)
      $stmt->execute();
     
      $result = mysqli_stmt_get_result($stmt);
+     $btn =  '<Button  id="open" type="button" class="open"><i class="fa-solid fa-cart-shopping"></i></Button>';
+     if(isset($_SESSION['role'])&&$_SESSION['role']=='admin')
+     {
+        $btn =  '<Button  id="admin" type="button" class="open">    <i class="fa-solid fa-pen-to-square"></i></Button>';
+
+
+     }
+
 
      while($row = mysqli_fetch_assoc($result))
      {
@@ -256,8 +266,7 @@ function productDetailsQuery($conn,$id)
            <label><span>Stock:</span>'.$row['Stock'].'</label>
            <label><span>Price:</span>'.$row['price'].'</label>
            <label class="p_description"><span>Details:</span>'.$row['p_description'].'</label>
-           <Button  id="open" type="button" class="open"><i class="fa-solid fa-cart-plus"></i></Button>
-               
+        '.$btn.'
            <input type="hidden" class="pr_id" id="producId" value="'.$row['Product_ID'].'">
            <input type="hidden" class="pr_name" name="productName" id="productName" value="'.$row['Name'].'">
            <input type="hidden"  class="pr_price" name="productPrice"  id="pprice" value="'.$row['price'].'">
@@ -321,22 +330,22 @@ function insertAnOrderItem($conn, $orderKey, $productID, $quantity)
 function addItemsToCookieOrder($sessionCart,$orderKey)
 {
     $index = 0;
-    if(!empty($_COOKIE['orrders']))
+    if(!empty($_COOKIE['orders']))
   
     {
      
-        $index = count(json_decode($_COOKIE['orrders'],true));
+        $index = count(json_decode($_COOKIE['orders'],true));
     
         //   var_dump(json_decode($_COOKIE['test'],true));
     
         $arr =  array($index=>$sessionCart);
         
-        $ordersArray = json_decode($_COOKIE['orrders'],true);
+        $ordersArray = json_decode($_COOKIE['orders'],true);
         $newArray =array_merge($ordersArray,$arr);
    
 
 
-        setcookie("orrders",json_encode($newArray),time()+1000000,"/");
+        setcookie("orders",json_encode($newArray),time()+1000000,"/");
         unset($_SESSION['shoppingcart']);
         header("location: ../Homepage.php");
 
@@ -345,7 +354,7 @@ function addItemsToCookieOrder($sessionCart,$orderKey)
 
     $arr = 
     array(0=>$sessionCart);
-    setcookie("orrders",json_encode($arr),time()+1000000,"/");
+    setcookie("orders",json_encode($arr),time()+1000000,"/");
 
     }
            
@@ -379,6 +388,10 @@ function checkQuantity($sessionCart, $conn)
     $stmt->bind_param("i",$productID);
      $stmt->execute();
     $result = mysqli_stmt_get_result($stmt);
+    if(mysqli_num_rows($result)==0)
+    {
+        continue;
+    }
     $row = mysqli_fetch_assoc($result);
    
 
@@ -488,11 +501,11 @@ function deleteAllCookies()
 
 function cookiesOrdersData()
 {
-    if(empty($_COOKIE['orrders']))
+    if(empty($_COOKIE['orders']))
     {
         return;
     }
-    $arr = json_decode($_COOKIE['orrders'],true);
+    $arr = json_decode($_COOKIE['orders'],true);
 $counter = 0;
 
 

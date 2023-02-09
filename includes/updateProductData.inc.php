@@ -5,6 +5,7 @@ session_start();
 
     if(isset($_SESSION['role'])&&$_SESSION['role']=='admin')
     {
+    
       if(isset($_POST['edit']))
     {
         $productID=$_POST['producId'];
@@ -12,6 +13,8 @@ session_start();
         $stock=$_POST['productNewStock'];
         $p_description=$_POST['p_description'];
         $pname = $_POST['NEWproductname'];
+      
+       
         if(updateProduct($conn,$productID,$pname,$stock,$price,$p_description)>0)
         {
           header("location: ../AdminPage.php?m=updatedSuccessfully");

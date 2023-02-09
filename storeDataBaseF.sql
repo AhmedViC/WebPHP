@@ -156,9 +156,9 @@ UPDATE `products` SET `p_description` = 'Samsung Galaxy S20, the smallest of the
 INSERT INTO `products` (`Product_ID`,`Name`,`price`,`Picture`,`Stock`,`Category`,`p_description`) 
 VALUES (46,'Galaxy S20',2000,'images/SamsungS20.png',55,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
-,(47,'Galaxy S20 plus',2000,'images/samsungs20plus',68,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
+,(47,'Galaxy S20 plus',2000,'images/samsungs20plus.png',68,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
-,(48,'Galaxy S21 ultra',2500,'images/iphone.jpg',32,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
+,(48,'Galaxy S21 ultra',2500,'images/sUltra.png',32,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
 ,(49,'Galaxy Z Flip',3000,'images/Flipz.png',29,11112,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
@@ -172,13 +172,13 @@ comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chips
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
 ,(72,'MateBook E',4000,'images/MateBookE.png',60,11118,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
-, (73,'MateBook 14',4300,'images/iphone.jpg',25,11118,'Samsung Galaxy S20, the smallest of the S20 family, 
+, (73,'MateBook 14',4300,'images/matebook14.png',25,11118,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
-,(74,'MateBook 14s',5000,'images/iphone.jpg',30,11118,'Samsung Galaxy S20, the smallest of the S20 family, 
+,(74,'MateBook 14s',5000,'images/matebook14.png',30,11118,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
-,(75,'Creator 7i',7000,'images/iphone.jpg',25,11119,'Samsung Galaxy S20, the smallest of the S20 family, 
+,(75,'Creator 7i',7000,'images/creator7i.png',25,11119,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
-, (76,'V14 Gen2',2000,'images/iphone.jpg',22,11119,'Samsung Galaxy S20, the smallest of the S20 family, 
+, (76,'V14 Gen2',2000,'images/creator7i.png',22,11119,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage')
 ,(77,'ThinkBook 15p',2999,'images/thinkpad.png',27,11119,'Samsung Galaxy S20, the smallest of the S20 family, 
 comes with a 6.2-inch display. Under the hood is Snapdragon 865/Exynos 990 chipset with 12GB RAM and 128GB storage');
