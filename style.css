@@ -67,6 +67,7 @@ button[disabled]{
   margin: auto auto;
 
 }
+
 .popUpBody button{
  
   margin: auto auto;
@@ -181,7 +182,7 @@ input[type="file"] {
   text-align: center;
   font-family: monospace;
   font-size: 1.1rem;
-  width: 60px;
+  width: fit-content;
   margin:  auto;
 
 }

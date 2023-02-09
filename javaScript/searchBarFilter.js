@@ -24,7 +24,7 @@ for(var i = 0 ; i<products1.length;i++)
    const Pname =  products1[i].getElementsByClassName('pr_name')[0].value
   
     if(!Pname.toLowerCase()
-        .includes(searchBar.value))
+        .includes(searchBar.value.toLowerCase()))
     {
         products1[i].style.display="none";
     }

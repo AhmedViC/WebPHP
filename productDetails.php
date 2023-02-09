@@ -21,8 +21,13 @@
     href="https://fonts.googleapis.com/css2?family=Exo:wght@300&family=Roboto:ital,wght@0,300;1,300;1,400&family=Source+Code+Pro&display=swap"
     rel="stylesheet">
     <script src="Javascript/quantitypopUpdetails.js" defer></script>
-     <script src="Javascript/helpWindow.js" defer></script>
+     <script src
+    ="Javascript/helpWindow.js" defer></script>
+    <style>
+       
+    </style>
 </head>
+
 <body>
 
 

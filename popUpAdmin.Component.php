@@ -6,14 +6,14 @@
 <div class="popUpBody">
   <img class="imgpop" id="imgP" src="images/FlipZ.jpg">
 
-  <label>Name</label>
-  <input type="text" id="p_name" name="NEWproductname">
+  <label >Name</label>
+  <input type="text" id="p_name" name="NEWproductname" maxlength="250"> 
   <label>Price</label>
-  <input type="text" id="price" name="productNewPrice">
+  <input type="number" id="price" name="productNewPrice" max="1000000">
   <label>Stock</label>
-  <input name="productNewStock" type="text" id="stock">
+  <input name="productNewStock" type="number" id="stock" max="1000000">
   <label>Description</label>
-  <textarea id="p_description" name="p_description"></textarea>
+  <textarea id="p_description" name="p_description" maxlength="500"></textarea>
 
   
 
